@@ -5,8 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery Component</title>
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/gallery.css">
+    <script src="src/js/gallery.js" defer></script>
 </head>
 <body>
-    
+    <div class="cpt-gallery">
+        <div class="gallery-viewer" data-caption="true">
+            <figure data-view="transition">
+                <picture>
+                    <source srcset="src/img/2.webp" type="image/webp">
+                    <source srcset="src/img/2.jpg" type="image/jpeg">
+                    <img src="src/img/2.jpg" alt="Image 2">
+                </picture>
+                <figcaption>Image 1</figcaption>
+            </figure>
+            <picture data-view="transition">
+                <source srcset="src/img/2.webp" type="image/webp">
+                <source srcset="src/img/2.jpg" type="image/jpeg">
+                <img src="src/img/2.jpg" alt="Image 2">
+            </picture>
+            <picture data-view="background">
+                <source srcset="src/img/2.webp" type="image/webp">
+                <source srcset="src/img/2.jpg" type="image/jpeg">
+                <img src="src/img/2.jpg" role="presentation">
+            </picture>
+        </div>
+        <div class="gallery-thumbnails">
+            <button aria-label="view Image 1" class="thumbnail">
+                <img src="src/img/1.jpg" alt="Image 1">
+            </button>
+            <button aria-label="view Image 2" class="thumbnail">
+                <img src="src/img/2.jpg" alt="Image 2">
+            </button>
+            <button aria-label="view Image 3" class="thumbnail">
+                <img src="src/img/3.jpg" alt="Image 3">
+            </button>
+            <button aria-label="view Image 4" class="thumbnail">
+                <img src="src/img/4.jpg" alt="Image 4">
+            </button>
+            <button aria-label="view Image 5" class="thumbnail">
+                <img src="src/img/5.jpg" alt="Image 5">
+            </button>
+            <button aria-label="view Image 6" class="thumbnail">
+                <img src="src/img/6.jpg" alt="Image 6">
+            </button>
+            <button aria-label="view Image 7" class="thumbnail">
+                <img src="src/img/7.jpg" alt="Image 7">
+            </button>
+            <button aria-label="view Image 8" class="thumbnail">
+                <img src="src/img/8.jpg" alt="Image 8">
+            </button>
+            <button aria-label="view Image 9" class="thumbnail">
+                <img src="src/img/9.jpg" alt="Image 9">
+            </button>
+            <button aria-label="view "Image 10 class="thumbnail">
+                <img src="src/img/10.jpg" alt="Image 10">
+            </button>
+            <button aria-label="view "Image 11 class="thumbnail">
+                <img src="src/img/11.jpg" alt="Image 11">
+            </button>
+            <button aria-label="view "Image 12 class="thumbnail">
+                <img src="src/img/12.jpg" alt="Image 12">
+            </button>
+            <button aria-label="view "Image 13 class="thumbnail">
+                <img src="src/img/13.jpg" alt="Image 13">
+            </button>
+            <button aria-label="view "Image 14 class="thumbnail">
+                <img src="src/img/14.jpg" alt="Image 14">
+            </button>
+            <button aria-label="view "Image 15 class="thumbnail">
+                <img src="src/img/15.jpg" alt="Image 15">
+            </button>
+            <button aria-label="view "Image 16 class="thumbnail">
+                <img src="src/img/16.jpg" alt="Image 16">
+            </button>
+            <button aria-label="view "Image 17 class="thumbnail">
+                <img src="src/img/17.jpg" alt="Image 17">
+            </button>
+        </div>
+    </div>
 </body>
 </html>
