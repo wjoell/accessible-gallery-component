@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sourceset template</title>
+        <style>
+            img {
+                display: block;
+                height: auto;
+                max-width: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <picture>
+            <source
+                srcset="
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/05/8QZGL3NJZHJ7.webp         480w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/05/8QZGL3NJZHJ7.webp         760w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/05/8QZGL3NJZHJ7.webp         992w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/05/8QZGL3NJZHJ7.webp 1440w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/05/8QZGL3NJZHJ7.webp        1920w
+                "
+                sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px"
+                type="image/webp" />
+            <source
+                srcset="
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/05/8QZGL3NJZHJ7.avif         480w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/05/8QZGL3NJZHJ7.avif         760w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/05/8QZGL3NJZHJ7.avif         992w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/05/8QZGL3NJZHJ7.avif 1440w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/05/8QZGL3NJZHJ7.avif        1920w
+                "
+                sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px"
+                type="image/avif" />
+            <img
+                alt="Commencement selfie"
+                height="3840"
+                src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/05/8QZGL3NJZHJ7.jpg"
+                srcset="
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/05/8QZGL3NJZHJ7.jpg         480w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/05/8QZGL3NJZHJ7.jpg         760w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/05/8QZGL3NJZHJ7.jpg         992w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/05/8QZGL3NJZHJ7.jpg 1440w,
+                    https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/05/8QZGL3NJZHJ7.jpg        1920w
+                "
+                sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px"
+                width="5760" />
+        </picture>
+        <script>
+            const img = document.querySelector("img");
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === "attributes" && mutation.attributeName === "src") {
+                        console.log(img.currentSrc);
+                    }
+                });
+            });
+
+            observer.observe(img, { attributes: true });
+        </script>
+    </body>
+</html>
