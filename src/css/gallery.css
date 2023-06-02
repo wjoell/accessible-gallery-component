@@ -1,16 +1,31 @@
 /* Gallery component layout */
 
-.cpt-gallery {
+.cpt-gallery-api {
     display: grid;
     grid-template-areas: "viewer" "thumbnails";
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
 }
-.cpt-gallery .gallery-viewer {
+.cpt-gallery-api .gallery-viewer {
     grid-area: viewer;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+}
+.gallery-viewer > * {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+}
+.gallery-viewer > figure,
+.gallery-viewer > .figure {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+.gallery-viewer > figure > *,
+.gallery-viewer > .figure > * {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
 }
 .gallery-viewer picture[data-view="background"] {
     z-index: 0;
