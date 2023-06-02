@@ -13,8 +13,8 @@
 
 <body>
     <!-- .cpt-gallery written by Cascade server with data-* values set by data def values -->
-    <div class="cpt-gallery" data-controls="true" data-thumbnails="true" data-aspect-ratio="2" data-caption="true"
-        data-mode="static">
+    <div class="component cpt-gallery-api" data-aspect-ratio="2" data-captions="yes" data-display-type="photo-gallery"
+        data-img-fit="cover" data-mode="static" data-controls="true">
         <!-- 
                 data-mode updated by JS to "active"
 
@@ -25,93 +25,537 @@
                 false - .figure displays
 
             -->
-
-        <div class="gallery-viewer">
-            <figure data-captioned="true">
-                <picture data-view="transition">
-                    <source srcset="src/img/2.webp" type="image/webp" />
-                    <source srcset="src/img/2.jpg" type="image/jpeg" />
-                    <img src="src/img/2.jpg" alt="Image 2" />
-                </picture>
+        <script>
+            const galleryObject = {
+                "id": "199",
+                "assetIds": [
+                    "media_ZVN2ZCNCM58B",
+                    "media_FTKG7NNPR3FD",
+                    "media_P7XFYC5DQ2RF",
+                    "media_KGMVJB123SMX",
+                    "media_5H9Y4RXNYMQW",
+                    "media_J8MXDWC4MCTR",
+                    "media_391MT55GX3FD",
+                    "media_533S9989F4Y4",
+                    "media_J5QX56847F9N",
+                    "media_HMPFHHFG47DF",
+                    "media_PL585VB6NGVX",
+                    "media_QKQ4K6Q6CK8K",
+                    "media_K5J1Y44Y3FGD",
+                ],
+                "assets": {
+                    "media_ZVN2ZCNCM58B": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/ZVN2ZCNCM58B.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/ZVN2ZCNCM58B.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/ZVN2ZCNCM58B.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/ZVN2ZCNCM58B.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "4256",
+                        "intrinsicHeight": "2832"
+                    },
+                    "media_FTKG7NNPR3FD": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/FTKG7NNPR3FD.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/FTKG7NNPR3FD.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/FTKG7NNPR3FD.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/FTKG7NNPR3FD.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/FTKG7NNPR3FD.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/FTKG7NNPR3FD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/FTKG7NNPR3FD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/FTKG7NNPR3FD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/FTKG7NNPR3FD.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/FTKG7NNPR3FD.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "3504",
+                        "intrinsicHeight": "2336"
+                    },
+                    "media_P7XFYC5DQ2RF": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/P7XFYC5DQ2RF.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/P7XFYC5DQ2RF.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/P7XFYC5DQ2RF.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/P7XFYC5DQ2RF.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/P7XFYC5DQ2RF.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/P7XFYC5DQ2RF.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/P7XFYC5DQ2RF.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/P7XFYC5DQ2RF.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/P7XFYC5DQ2RF.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "4256",
+                        "intrinsicHeight": "2832"
+                    },
+                    "media_KGMVJB123SMX": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/KGMVJB123SMX.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/KGMVJB123SMX.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/KGMVJB123SMX.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/KGMVJB123SMX.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/KGMVJB123SMX.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/KGMVJB123SMX.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/KGMVJB123SMX.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/KGMVJB123SMX.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/KGMVJB123SMX.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "5970",
+                        "intrinsicHeight": "3980"
+                    },
+                    "media_5H9Y4RXNYMQW": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/5H9Y4RXNYMQW.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/5H9Y4RXNYMQW.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/5H9Y4RXNYMQW.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/5H9Y4RXNYMQW.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/5H9Y4RXNYMQW.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/5H9Y4RXNYMQW.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/5H9Y4RXNYMQW.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/5H9Y4RXNYMQW.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/5H9Y4RXNYMQW.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "5616",
+                        "intrinsicHeight": "3744"
+                    },
+                    "media_J8MXDWC4MCTR": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J8MXDWC4MCTR.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J8MXDWC4MCTR.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J8MXDWC4MCTR.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J8MXDWC4MCTR.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J8MXDWC4MCTR.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J8MXDWC4MCTR.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J8MXDWC4MCTR.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J8MXDWC4MCTR.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J8MXDWC4MCTR.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "2784",
+                        "intrinsicHeight": "1848"
+                    },
+                    "media_391MT55GX3FD": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/391MT55GX3FD.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/391MT55GX3FD.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/391MT55GX3FD.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/391MT55GX3FD.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/391MT55GX3FD.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/391MT55GX3FD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/391MT55GX3FD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/391MT55GX3FD.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/391MT55GX3FD.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "5520",
+                        "intrinsicHeight": "3680"
+                    },
+                    "media_533S9989F4Y4": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/533S9989F4Y4.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/533S9989F4Y4.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/533S9989F4Y4.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/533S9989F4Y4.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/533S9989F4Y4.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/533S9989F4Y4.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/533S9989F4Y4.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/533S9989F4Y4.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/533S9989F4Y4.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/533S9989F4Y4.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "4928",
+                        "intrinsicHeight": "3280"
+                    },
+                    "media_J5QX56847F9N": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J5QX56847F9N.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J5QX56847F9N.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J5QX56847F9N.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J5QX56847F9N.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J5QX56847F9N.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J5QX56847F9N.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/J5QX56847F9N.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/J5QX56847F9N.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/J5QX56847F9N.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/J5QX56847F9N.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "4256",
+                        "intrinsicHeight": "2832"
+                    },
+                    "media_HMPFHHFG47DF": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/HMPFHHFG47DF.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/HMPFHHFG47DF.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/HMPFHHFG47DF.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/HMPFHHFG47DF.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/HMPFHHFG47DF.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/HMPFHHFG47DF.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/HMPFHHFG47DF.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/HMPFHHFG47DF.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/HMPFHHFG47DF.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/HMPFHHFG47DF.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "4256",
+                        "intrinsicHeight": "2832"
+                    },
+                    "media_PL585VB6NGVX": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/PL585VB6NGVX.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/PL585VB6NGVX.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/PL585VB6NGVX.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/PL585VB6NGVX.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/PL585VB6NGVX.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/PL585VB6NGVX.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/PL585VB6NGVX.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/PL585VB6NGVX.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/PL585VB6NGVX.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/PL585VB6NGVX.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "5568",
+                        "intrinsicHeight": "3712"
+                    },
+                    "media_QKQ4K6Q6CK8K": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/QKQ4K6Q6CK8K.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/QKQ4K6Q6CK8K.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/QKQ4K6Q6CK8K.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/QKQ4K6Q6CK8K.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/QKQ4K6Q6CK8K.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/QKQ4K6Q6CK8K.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "3873",
+                        "intrinsicHeight": "2582"
+                    },
+                    "media_K5J1Y44Y3FGD": {
+                        "type": "image",
+                        "thumbnail": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/K5J1Y44Y3FGD.avif",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/K5J1Y44Y3FGD.webp",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/K5J1Y44Y3FGD.jpg"
+                        },
+                        "inlineFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.avif 1440w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.webp 1440w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.jpg 1440w"
+                        },
+                        "inlineSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px",
+                        "modalFormats": {
+                            "avif": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.avif 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/K5J1Y44Y3FGD.avif 1920w",
+                            "webp": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.webp 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/K5J1Y44Y3FGD.webp 1920w",
+                            "jpg": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/K5J1Y44Y3FGD.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/K5J1Y44Y3FGD.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/K5J1Y44Y3FGD.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/K5J1Y44Y3FGD.jpg 1440w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hd/pub-api/2021/08/K5J1Y44Y3FGD.jpg 1920w"
+                        },
+                        "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
+                        "alt": null,
+                        "caption": null,
+                        "intrinsicWidth": "3432",
+                        "intrinsicHeight": "2236"
+                    },
+                }
+            }
+        </script>
+        <div class="gallery-viewer" data-captioned="false" data-gallery-id="199">
+            <figure data-next-captioned="">
                 <picture data-view="background">
-                    <source srcset="src/img/2.webp" type="image/webp" />
-                    <source srcset="src/img/2.jpg" type="image/jpeg" />
-                    <img src="src/img/2.jpg" role="presentation" />
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
+                        type="image/avif">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w"
+                        type="image/webp">
+                    <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
+                        role="presentation" height="2832" width="4256"
+                        sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
+                        data-view="background">
+                </picture>
+                <picture data-view="transition">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
+                        type="image/avif">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w"
+                        type="image/webp">
+                    <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
+                        alt=" " height="2832" width="4256"
+                        sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
+                        data-view="transition">
                 </picture>
                 <figcaption>
-                    <div data-view="transition">
-                        Image 1
-                    </div>
                     <div data-view="background">
-                        Image 1
+                    </div>
+                    <div data-view="transition">
                     </div>
                 </figcaption>
             </figure>
-            <div class="figure" data-captioned="true">
-                <picture data-view="transition">
-                    <source srcset="src/img/2.webp" type="image/webp" />
-                    <source srcset="src/img/2.jpg" type="image/jpeg" />
-                    <img src="src/img/2.jpg" alt="Image 2" />
-                </picture>
+            <div class="figure" data-next-captioned="">
                 <picture data-view="background">
-                    <source srcset="src/img/2.webp" type="image/webp" />
-                    <source srcset="src/img/2.jpg" type="image/jpeg" />
-                    <img src="src/img/2.jpg" role="presentation" />
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
+                        type="image/avif">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w"
+                        type="image/webp">
+                    <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
+                        role="presentation" height="2832" width="4256"
+                        sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
+                        data-view="background">
                 </picture>
+                <picture data-view="transition">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
+                        type="image/avif">
+                    <source
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.webp 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.webp 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.webp 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.webp 1440w"
+                        type="image/webp">
+                    <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                        srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
+                        alt=" " height="2832" width="4256"
+                        sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
+                        data-view="transition">
+                </picture>
+                <div class="caption">
+                    <div data-view="transition">
+                    </div>
+                    <div data-view="background">
+                    </div>
+                </div>
+            </div>
+            <div class="media-controller">
+                <button aria-label="Previous image" class="media-prev">
+                    <span class="icon i-media-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="i-media-prev" role="presentation"
+                            viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <g class="symbol">
+                                <path d="M80,25L40,50l40,25V25z"></path>
+                                <path d="M20,75h15V50V25H20V75z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </button>
+                <button aria-label="Pause media" data-button-state="playing" class="media-play-pause">
+                    <span class="icon i-media-play">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="i-media-play" role="presentation"
+                            viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <g class="symbol">
+                                <path d="M73.3,50L38.7,75V25L73.3,50z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="icon i-media-pause">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="i-media-pause" role="presentation"
+                            viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <g class="symbol">
+                                <path d="M45,25H30v50h15V25z"></path>
+                                <path d="M55,75h15V25H55V75z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </button>
+                <button aria-label="Next image" class="media-next">
+                    <span class="icon i-media-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="i-media-next" role="presentation"
+                            viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <g class="symbol">
+                                <path d="M20,75l40-25L20,25V75z"></path>
+                                <path d="M80,25H65v25v25h15V25z"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </button>
             </div>
         </div>
-        <div class="gallery-thumbnails">
-            <button aria-label="view Image 1" class="thumbnail">
-                <img src="src/img/1.jpg" alt="Image 1" />
+        <div class="gallery-thumbnails" data-count="13">
+
+            <button aria-label="load Image 1" class="thumbnail" data-asset-id="media_ZVN2ZCNCM58B" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 2" class="thumbnail">
-                <img src="src/img/2.jpg" alt="Image 2" />
+
+            <button aria-label="load Image 2" class="thumbnail" data-asset-id="media_FTKG7NNPR3FD" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/FTKG7NNPR3FD.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 3" class="thumbnail">
-                <img src="src/img/3.jpg" alt="Image 3" />
+
+            <button aria-label="load Image 3" class="thumbnail" data-asset-id="media_P7XFYC5DQ2RF" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/P7XFYC5DQ2RF.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 4" class="thumbnail">
-                <img src="src/img/4.jpg" alt="Image 4" />
+
+            <button aria-label="load Image 4" class="thumbnail" data-asset-id="media_KGMVJB123SMX" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/KGMVJB123SMX.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 5" class="thumbnail">
-                <img src="src/img/5.jpg" alt="Image 5" />
+
+            <button aria-label="load Image 5" class="thumbnail" data-asset-id="media_5H9Y4RXNYMQW" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/5H9Y4RXNYMQW.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 6" class="thumbnail">
-                <img src="src/img/6.jpg" alt="Image 6" />
+
+            <button aria-label="load Image 6" class="thumbnail" data-asset-id="media_J8MXDWC4MCTR" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J8MXDWC4MCTR.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 7" class="thumbnail">
-                <img src="src/img/7.jpg" alt="Image 7" />
+
+            <button aria-label="load Image 7" class="thumbnail" data-asset-id="media_391MT55GX3FD" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/391MT55GX3FD.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 8" class="thumbnail">
-                <img src="src/img/8.jpg" alt="Image 8" />
+
+            <button aria-label="load Image 8" class="thumbnail" data-asset-id="media_533S9989F4Y4" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/533S9989F4Y4.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 9" class="thumbnail">
-                <img src="src/img/9.jpg" alt="Image 9" />
+
+            <button aria-label="load Image 9" class="thumbnail" data-asset-id="media_J5QX56847F9N" data-next-id="media_"
+                data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/J5QX56847F9N.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 10" class="thumbnail">
-                <img src="src/img/10.jpg" alt="Image 10" />
+
+            <button aria-label="load Image 10" class="thumbnail" data-asset-id="media_HMPFHHFG47DF"
+                data-next-id="media_" data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/HMPFHHFG47DF.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 11" class="thumbnail">
-                <img src="src/img/11.jpg" alt="Image 11" />
+
+            <button aria-label="load Image 11" class="thumbnail" data-asset-id="media_PL585VB6NGVX"
+                data-next-id="media_" data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/PL585VB6NGVX.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 12" class="thumbnail">
-                <img src="src/img/12.jpg" alt="Image 12" />
+
+            <button aria-label="load Image 12" class="thumbnail" data-asset-id="media_QKQ4K6Q6CK8K"
+                data-next-id="media_" data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/QKQ4K6Q6CK8K.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 13" class="thumbnail">
-                <img src="src/img/13.jpg" alt="Image 13" />
+
+            <button aria-label="load Image 13" class="thumbnail" data-asset-id="media_K5J1Y44Y3FGD"
+                data-next-id="media_" data-prev-id="media_">
+                <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_xxs/pub-api/2021/08/K5J1Y44Y3FGD.jpg"
+                    role="presentation" loading="lazy">
             </button>
-            <button aria-label="view Image 14" class="thumbnail">
-                <img src="src/img/14.jpg" alt="Image 14" />
-            </button>
-            <button aria-label="view Image 15" class="thumbnail">
-                <img src="src/img/15.jpg" alt="Image 15" />
-            </button>
-            <button aria-label="view Image 16" class="thumbnail">
-                <img src="src/img/16.jpg" alt="Image 16" />
-            </button>
-            <button aria-label="view Image 17" class="thumbnail">
-                <img src="src/img/17.jpg" alt="Image 17" />
-            </button>
+
         </div>
     </div>
 </body>
