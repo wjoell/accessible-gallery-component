@@ -47,6 +47,9 @@ const gallery = document.querySelector(`.gallery-viewer[data-gallery-id="${galle
 
 // playback controls
 const galleryMediaConroller = gallery.querySelector(".media-controller");
+const galleryPlayPauseButton = galleryMediaConroller.querySelector(".media-play-pause");
+const galleryNextButton = galleryMediaConroller.querySelector(".media-next");
+const galleryPreviousButton = galleryMediaConroller.querySelector(".media-prev");
 
 // gallery thumbnail container
 const galleryThumbnailContainer = gallery.querySelectorAll(".gallery-thumbnails");
