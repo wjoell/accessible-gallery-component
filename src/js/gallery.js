@@ -20,7 +20,7 @@ Data source:
     The gallery is designed to be used with a CMS that renders a gallery object with the following schema:
 
     galleryObject.id // string
-    galleryObject.assetIds // array of asset ids
+    galleryObject.assetIds // array of asset ids used as keys for galleryObject.assets
     galleryObject.assets  // object of asset objects
     galleryObject.assets[assetId].type // string 'image' or 'video'
     galleryObject.assets[assetId].thumbnail // object of avif, webp, and jpg thumbnail url strings
@@ -37,7 +37,10 @@ Data source:
 // set up some environment variables
 window.gallery = window.gallery || {};
 window.gallery[galleryObject.id] = window.gallery[galleryObject.id] || {};
-window.gallery[galleryObject.id].running = true;
+window.gallery[galleryObject.id].running = false;
+window.gallery[galleryObject.id].galleryInterval = false;
+window.gallery[galleryObject.id].galleryIntervalDelay = 5 * 1000;
+window.gallery[galleryObject.id].galleryAssetIndex = 0;
 
 // define dom elements for gallery
 const gallery = document.querySelector(`.gallery-viewer[data-gallery-id="${galleryObject.id}"]`);
@@ -73,3 +76,73 @@ const noCaptionTransitionJpg = galleryNoCaptionImage.querySelector('picture[data
 const galleryNoCaptionBackgroundPlaceholder = gallery.querySelector('> .caption div[data-view="background"]');
 const galleryNoCaptionTransitionPlaceholder = gallery.querySelector('> .caption div[data-view="transition"]');
 // const galleryNoCaptionVideo = gallery.querySelector('> .video');
+
+// set .cpt-gallery-api to active
+gallery.dataset.mode = "active";
+
+/* Function to setinterval for gallery to loop through assetIds array
+    - setinterval is cleared when user hovers over gallery
+    - setinterval is cleared when user clicks next or previous button
+    - setinterval is cleared when user clicks thumbnail button
+    - setinterval is cleared when user clicks pause button
+    - setinterval is set when user clicks play button
+    - at each interval the next image is loaded into the transition containers
+*/
+function galleryInterval() {
+    window.gallery[galleryObject.id].galleryInterval = setInterval(() => {
+        // set the next image in the gallery
+        window.gallery[galleryObject.id].galleryAssetIndex = (window.gallery[galleryObject.id].galleryAssetIndex + 1) % galleryObject.assetIds.length;
+
+        // set the next image in the gallery
+        gallerySetImage(window.gallery[galleryObject.id].galleryAssetIndex);
+    }, window.gallery[galleryObject.id].galleryIntervalDelay);
+}
+
+/* Function to set the gallery to a specific image
+    - the gallery is paused
+    - the gallery is set to the specified image
+    - the gallery is played
+*/
+function gallerySetImage(index) {
+    // pause the gallery
+    galleryPause();
+    // set the gallery to the specified image
+    galleryLoadImage(index);
+    // play the gallery
+    galleryPlay();
+}
+function galleryPause() {
+    // pause the gallery
+    window.gallery[galleryObject.id].running = false;
+    // clear the gallery interval
+    clearInterval(window.gallery[galleryObject.id].galleryInterval);
+    // update the gallery media controller
+    galleryMediaConroller.dataset.state = "paused";
+}
+function galleryPlay() {
+    // play the gallery
+    window.gallery[galleryObject.id].running = true;
+    // set the gallery interval
+    galleryInterval();
+    // update the gallery media controller
+    galleryMediaConroller.dataset.state = "playing";
+}
+function galleryLoadImage(index) {
+    // set the gallery to the specified image
+    window.gallery[galleryObject.id].galleryAssetIndex = index;
+    // set the gallery to the specified image
+    gallerySetImageSrc(index);
+    // set the gallery to the specified image
+    gallerySetImageCaption(index);
+    // set the gallery to the specified image
+    gallerySetImageThumbnail(index);
+}
+function gallerySetTransitionImageSrc(index) {
+    // set key for assetId
+    let assetId = galleryObject.assetIds[index];
+    // set srcset and src for transition image
+    figureTransitionAvif.srcset = galleryObject.assets[assetId].inlineFormats.avif;
+    figureTransitionWebp.srcset = galleryObject.assets[assetId].inlineFormats.webp;
+    figureTransitionJpg.srcset = galleryObject.assets[assetId].inlineFormats.jpg;
+    figureTransitionJpg.src = galleryObject.assets[assetId].inlineFormats.jpg.split(" ")[0];
+}
