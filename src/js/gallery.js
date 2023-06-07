@@ -93,7 +93,7 @@ gallery.dataset.mode = "active";
 */
 function galleryInterval() {
     window.gallery[galleryObject.id].galleryInterval = setInterval(() => {
-        // set the next image in the gallery
+        // set the next image in the gallery or loop back to the first image
         window.gallery[galleryObject.id].galleryAssetIndex = (window.gallery[galleryObject.id].galleryAssetIndex + 1) % galleryObject.assetIds.length;
 
         // set the next image in the gallery
