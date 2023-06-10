@@ -1,6 +1,4 @@
 /*
-Project description:
-
 The viewer:
 The gallery viewer uses a stack of images to create a transition effect between images. 
     - The first image is loaded in all four containers:
@@ -34,118 +32,175 @@ Data source:
     galleryObject.assets[assetId].intrinsicHeight // height attribute string
 
 */
-// set up some environment variables
-window.gallery = window.gallery || {};
-window.gallery[galleryObject.id] = window.gallery[galleryObject.id] || {};
-window.gallery[galleryObject.id].running = false;
-window.gallery[galleryObject.id].galleryInterval = false;
-window.gallery[galleryObject.id].galleryIntervalDelay = 5 * 1000;
-window.gallery[galleryObject.id].galleryAssetIndex = 0;
+// set up the GalleryPlayer class
+class GalleryPlayer {
+    #galleryIDString;
+    #galleryDataObject;
+    constructor(galleryDataObject, galleryIDString, galleryViewer) {
+        this.#galleryDataObject = galleryDataObject;
+        this.#galleryIDString = galleryIDString;
+        // set up some environment variables
+        this.#galleryDataObject.running = false;
+        this.#galleryDataObject.interval = false;
+        this.#galleryDataObject.intervalDelay = 5 * 1000;
+        this.#galleryDataObject.assetIndex = 0;
+        // define dom elements for gallery
+        this.gallery = galleryViewer;
 
-// define dom elements for gallery
-const gallery = document.querySelector(`.gallery-viewer[data-gallery-id="${galleryObject.id}"]`);
+        // test for gallery element and raise error if not found
+        if (!this.gallery) {
+            throw new Error(`Gallery element with data-gallery-id="${this.#galleryIDString}" not found.`);
+        }
+        // playback controls
+        this.galleryMediaConroller = this.gallery.querySelector(".media-controller");
+        this.galleryPlayPauseButton = this.galleryMediaConroller.querySelector(".media-play-pause");
+        this.galleryNextButton = this.galleryMediaConroller.querySelector(".media-next");
+        this.galleryPreviousButton = this.galleryMediaConroller.querySelector(".media-prev");
 
-// playback controls
-const galleryMediaConroller = gallery.querySelector(".media-controller");
-const galleryPlayPauseButton = galleryMediaConroller.querySelector(".media-play-pause");
-const galleryNextButton = galleryMediaConroller.querySelector(".media-next");
-const galleryPreviousButton = galleryMediaConroller.querySelector(".media-prev");
+        // gallery thumbnail container
+        this.galleryThumbnailContainer = this.gallery.querySelectorAll(".gallery-thumbnails");
+        this.galleryThumbnailButtons = this.galleryThumbnailContainer.querySelectorAll("button");
 
-// gallery thumbnail container
-const galleryThumbnailContainer = gallery.querySelectorAll(".gallery-thumbnails");
-const galleryThumbnailButtons = galleryThumbnailContainer.querySelectorAll("button");
+        // captioned version of image with background and transition containers
+        this.galleryCaptionedImage = this.gallery.querySelector("figure");
+        this.figureBackgroundAvif = this.galleryCaptionedImage.querySelector('picture[data-view="background"] source[type="image/avif"]');
+        this.figureBackgroundWebp = this.galleryCaptionedImage.querySelector('picture[data-view="background"] source[type="image/webp"]');
+        this.figureBackgroundJpg = this.galleryCaptionedImage.querySelector('picture[data-view="background"] img');
+        this.figureTransitionAvif = this.galleryCaptionedImage.querySelector('picture[data-view="transition"] source[type="image/avif"]');
+        this.figureTransitionWebp = this.galleryCaptionedImage.querySelector('picture[data-view="transition"] source[type="image/webp"]');
+        this.figureTransitionJpg = this.galleryCaptionedImage.querySelector('picture[data-view="transition"] img');
+        this.galleryBackgroundCaption = this.galleryCaptionedImage.querySelector('figcaption div[data-view="background"]');
+        this.galleryTransitionCaption = this.galleryCaptionedImage.querySelector('figcaption div[data-view="transition"]');
 
-// captioned version of image with background and transition containers
-const galleryCaptionedImage = gallery.querySelector("figure");
-const figureBackgroundAvif = galleryCaptionedImage.querySelector('picture[data-view="background"] source[type="image/avif"]');
-const figureBackgroundWebp = galleryCaptionedImage.querySelector('picture[data-view="background"] source[type="image/webp"]');
-const figureBackgroundJpg = galleryCaptionedImage.querySelector('picture[data-view="background"] img');
-const figureTransitionAvif = galleryCaptionedImage.querySelector('picture[data-view="transition"] source[type="image/avif"]');
-const figureTransitionWebp = galleryCaptionedImage.querySelector('picture[data-view="transition"] source[type="image/webp"]');
-const figureTransitionJpg = galleryCaptionedImage.querySelector('picture[data-view="transition"] img');
+        // uncaptioned version of image with background and transition containers
+        this.galleryNoCaptionImage = this.gallery.querySelector("> .figure");
+        this.noCaptionBackgroundAvif = this.galleryNoCaptionImage.querySelector('picture[data-view="background"] source[type="image/avif"]');
+        this.noCaptionBackgroundWebp = this.galleryNoCaptionImage.querySelector('picture[data-view="background"] source[type="image/webp"]');
+        this.noCaptionBackgroundJpg = this.galleryNoCaptionImage.querySelector('picture[data-view="background"] img');
+        this.noCaptionTransitionAvif = this.galleryNoCaptionImage.querySelector('picture[data-view="transition"] source[type="image/avif"]');
+        this.noCaptionTransitionWebp = this.galleryNoCaptionImage.querySelector('picture[data-view="transition"] source[type="image/webp"]');
+        this.noCaptionTransitionJpg = this.galleryNoCaptionImage.querySelector('picture[data-view="transition"] img');
+        this.galleryNoCaptionBackgroundPlaceholder = this.gallery.querySelector('> .caption div[data-view="background"]');
+        this.galleryNoCaptionTransitionPlaceholder = this.gallery.querySelector('> .caption div[data-view="transition"]');
+        // this.galleryNoCaptionVideo = gallery.querySelector('> .video');
+    }
+    // instance methods
+    /* Function to setinterval for gallery to loop through assetIds array
+        - setinterval is cleared when user hovers over gallery
+        - setinterval is cleared when user clicks next or previous button
+        - setinterval is cleared when user clicks thumbnail button
+        - setinterval is cleared when user clicks pause button
+        - setinterval is set when user clicks play button
+        - at each interval the next image is loaded into the transition containers
+    */
+    getDelay() {
+        return this.#galleryDataObject.intervalDelay;
+    }
+    setDelay(delay) {
+        this.#galleryDataObject.intervalDelay = delay;
+    }
 
-const galleryBackgroundCaption = galleryCaptionedImage.querySelector('figcaption div[data-view="background"]');
-const galleryTransitionCaption = galleryCaptionedImage.querySelector('figcaption div[data-view="transition"]');
+    /* Function to set the gallery to a specific image
+        - the gallery is paused
+        - the gallery is set to the specified image
+        - the gallery is played
+    */
+    setImage(index) {
+        // pause the gallery
+        pause();
+        // set the gallery to the specified image
+        loadImage(index);
+        // play the gallery
+        play();
+    }
+    pause() {
+        // pause the gallery
+        window.gallery[galleryObject.id].running = false;
+        // clear the gallery interval
+        clearInterval(window.gallery[galleryObject.id].interval);
+        // update the gallery media controller
+        galleryMediaConroller.dataset.state = "paused";
+    }
+    play() {
+        // play the gallery
+        window.gallery[galleryObject.id].running = true;
+        // set the gallery interval
+        interval();
+        // update the gallery media controller
+        galleryMediaConroller.dataset.state = "playing";
+    }
+    loadImage(index) {
+        // set the gallery to the specified image
+        window.gallery[galleryObject.id].assetIndex = index;
+        // set the gallery to the specified image
+        setTransitionImageSrc(index);
+        // set the gallery to the specified image
+        setImageCaption(index);
+        // set the gallery to the specified image
+        setThumbnail(index);
+    }
+    setTransitionImageSrc(index) {
+        // set key for assetId
+        let assetId = this.#galleryDataObject.assetIds[index];
+        // set srcset and src for transition image
+        this.figureTransitionAvif.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.avif;
+        this.figureTransitionWebp.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.webp;
+        this.figureTransitionJpg.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.jpg;
+        this.figureTransitionJpg.src = this.#galleryDataObject.assets[assetId].src;
+    }
+    setBackgroundImageSrc(index) {
+        // set key for assetId
+        let assetId = this.#galleryDataObject.assetIds[index];
+        // set srcset and src for background image
+        this.figureBackgroundAvif.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.avif;
+        this.figureBackgroundWebp.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.webp;
+        this.figureBackgroundJpg.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.jpg;
+        this.figureBackgroundJpg.src = this.#galleryDataObject.assets[assetId].src;
+    }
+    setTransitionImageCaption(index) {
+        // set key for assetId
+        let assetId = this.#galleryDataObject.assetIds[index];
+        // set transition caption
+        this.galleryTransitionCaption.innerHTML = this.#galleryDataObject.assets[assetId].caption;
+    }
+    setBackgroundImageCaption(index) {
+        // set key for assetId
+        let assetId = this.#galleryDataObject.assetIds[index];
+        // set background caption
+        this.galleryBackgroundCaption.innerHTML = this.#galleryDataObject.assets[assetId].caption;
+    }
+    setThumbnail(index) {
+        // set key for assetId
+        let assetId = this.#galleryDataObject.assetIds[index];
+        // set thumbnail
+        this.galleryThumbnail.src = this.#galleryDataObject.assets[assetId].thumbnail;
+    }
+    startInterval() {
+        if (this.#galleryDataObject.interval) {
+            clearInterval(this.#galleryDataObject.interval);
+        }
+        this.#galleryDataObject.interval = setInterval(() => {
+            // set the next image in the gallery or loop back to the first image
+            this.#galleryDataObject.assetIndex = (this.#galleryDataObject.assetIndex + 1) % this.#galleryDataObject.assetIds.length;
 
-// uncaptioned version of image with background and transition containers
-const galleryNoCaptionImage = gallery.querySelector("> .figure");
-const noCaptionBackgroundAvif = galleryNoCaptionImage.querySelector('picture[data-view="background"] source[type="image/avif"]');
-const noCaptionBackgroundWebp = galleryNoCaptionImage.querySelector('picture[data-view="background"] source[type="image/webp"]');
-const noCaptionBackgroundJpg = galleryNoCaptionImage.querySelector('picture[data-view="background"] img');
-const noCaptionTransitionAvif = galleryNoCaptionImage.querySelector('picture[data-view="transition"] source[type="image/avif"]');
-const noCaptionTransitionWebp = galleryNoCaptionImage.querySelector('picture[data-view="transition"] source[type="image/webp"]');
-const noCaptionTransitionJpg = galleryNoCaptionImage.querySelector('picture[data-view="transition"] img');
-
-const galleryNoCaptionBackgroundPlaceholder = gallery.querySelector('> .caption div[data-view="background"]');
-const galleryNoCaptionTransitionPlaceholder = gallery.querySelector('> .caption div[data-view="transition"]');
-// const galleryNoCaptionVideo = gallery.querySelector('> .video');
-
-// set .cpt-gallery-api to active
-gallery.dataset.mode = "active";
-
-/* Function to setinterval for gallery to loop through assetIds array
-    - setinterval is cleared when user hovers over gallery
-    - setinterval is cleared when user clicks next or previous button
-    - setinterval is cleared when user clicks thumbnail button
-    - setinterval is cleared when user clicks pause button
-    - setinterval is set when user clicks play button
-    - at each interval the next image is loaded into the transition containers
-*/
-function galleryInterval() {
-    window.gallery[galleryObject.id].galleryInterval = setInterval(() => {
-        // set the next image in the gallery or loop back to the first image
-        window.gallery[galleryObject.id].galleryAssetIndex = (window.gallery[galleryObject.id].galleryAssetIndex + 1) % galleryObject.assetIds.length;
-
-        // set the next image in the gallery
-        gallerySetImage(window.gallery[galleryObject.id].galleryAssetIndex);
-    }, window.gallery[galleryObject.id].galleryIntervalDelay);
+            // set the next image in the gallery
+            gallerySetImage(this.#galleryDataObject.assetIndex);
+        }, this.#galleryDataObject.intervalDelay);
+    }
+    transition() {
+        // animate the transition image
+    }
+    // initialize the gallery
+    init() {
+        // set .cpt-gallery-api instance to active
+        this.gallery.closest(".cpt-gallery-api").dataset.mode = "active";
+    }
 }
-
-/* Function to set the gallery to a specific image
-    - the gallery is paused
-    - the gallery is set to the specified image
-    - the gallery is played
-*/
-function gallerySetImage(index) {
-    // pause the gallery
-    galleryPause();
-    // set the gallery to the specified image
-    galleryLoadImage(index);
-    // play the gallery
-    galleryPlay();
-}
-function galleryPause() {
-    // pause the gallery
-    window.gallery[galleryObject.id].running = false;
-    // clear the gallery interval
-    clearInterval(window.gallery[galleryObject.id].galleryInterval);
-    // update the gallery media controller
-    galleryMediaConroller.dataset.state = "paused";
-}
-function galleryPlay() {
-    // play the gallery
-    window.gallery[galleryObject.id].running = true;
-    // set the gallery interval
-    galleryInterval();
-    // update the gallery media controller
-    galleryMediaConroller.dataset.state = "playing";
-}
-function galleryLoadImage(index) {
-    // set the gallery to the specified image
-    window.gallery[galleryObject.id].galleryAssetIndex = index;
-    // set the gallery to the specified image
-    gallerySetImageSrc(index);
-    // set the gallery to the specified image
-    gallerySetImageCaption(index);
-    // set the gallery to the specified image
-    gallerySetImageThumbnail(index);
-}
-function gallerySetTransitionImageSrc(index) {
-    // set key for assetId
-    let assetId = galleryObject.assetIds[index];
-    // set srcset and src for transition image
-    figureTransitionAvif.srcset = galleryObject.assets[assetId].inlineFormats.avif;
-    figureTransitionWebp.srcset = galleryObject.assets[assetId].inlineFormats.webp;
-    figureTransitionJpg.srcset = galleryObject.assets[assetId].inlineFormats.jpg;
-    figureTransitionJpg.src = galleryObject.assets[assetId].inlineFormats.jpg.split(" ")[0];
+for (let galleryIDString in window.galleryData) {
+    window.galleryData[galleryIDString].player = new GalleryPlayer(
+        window.galleryData[galleryIDString],
+        galleryIDString,
+        document.querySelector(`.gallery-viewer[data-gallery-id="${galleryIDString}"]`)
+    );
+    window.galleryData[galleryIDString].player.init();
 }
