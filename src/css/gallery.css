@@ -44,3 +44,6 @@
     width: 100%;
     height: 4em;
 }
+button[aria-pressed="true"] {
+    outline: 1px solid red;
+}
