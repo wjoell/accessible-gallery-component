@@ -1,5 +1,8 @@
 /* Gallery component layout */
-
+:root {
+    --color-background: #000;
+    --color-foreground: #fff;
+}
 .cpt-gallery-api {
     display: grid;
     grid-template-areas: "viewer" "thumbnails";
@@ -27,7 +30,45 @@
     grid-column: 1 / -1;
     grid-row: 1 / -1;
 }
-.gallery-viewer picture[data-view="background"] {
+.media-controller {
+    align-self: self-end;
+    z-index: 10;
+    display: flex;
+}
+.media-controller button {
+    flex-basis: 4rem;
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    display: flex;
+}
+.media-controller button svg {
+    width: 100%;
+    height: 100%;
+}
+.media-controller button svg circle {
+    fill: var(--color-background);
+}
+.media-controller button svg .symbol path {
+    fill: var(--color-foreground);
+}
+.media-controller[data-state="playing"] button.media-play-pause .icon.i-media-pause {
+    display: none;
+}
+.media-controller[data-state="paused"] button.media-play-pause .icon.i-media-play {
+    display: none;
+}
+.gallery-viewer .progress-bar {
+    z-index: 8;
+    align-self: self-start;
+    width: 100%;
+}
+.gallery-viewer .progress-bar progress {
+    height: 0.5rem;
+    width: 100%;
+    background: var(--color-foreground);
+}
+/* .gallery-viewer picture[data-view="background"] {
     z-index: 0;
 }
 .gallery-viewer picture[data-view="transition"] {
@@ -35,7 +76,7 @@
 }
 .gallery-viewer figure[data-view="transition"] {
     z-index: 2;
-}
+} */
 .gallery-thumbnails {
     grid-area: thumbnails;
     display: flex;
