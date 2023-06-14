@@ -74,6 +74,13 @@ class GalleryPlayer {
 
         // progress bar
         this.galleryProgressBar = this.gallery.querySelector(".progress > .progress-bar");
+        this.progressBarAnimation = this.galleryProgressBar.animate([{ width: "1%" }, { width: "100%" }], {
+            duration: this.#galleryDataObject.intervalDelay,
+            // fill: "forwards",
+        });
+        this.progressBarAnimation.pause();
+
+        // set up event listeners
         this.galleryImage.addEventListener("mouseenter", () => {
             this.pause();
         });
@@ -92,89 +99,50 @@ class GalleryPlayer {
             }
             // console.log(event.target);
             if (event.target.closest("button.thumbnail")) {
-                console.log(event.target.closest("button.thumbnail").dataset.assetId);
-                clearInterval(this.#galleryDataObject.interval);
+                this.pause();
                 this.#galleryDataObject.assetIndex = this.#galleryDataObject.assetIds.indexOf(event.target.closest("button.thumbnail").dataset.assetId);
                 this.loadImage(this.#galleryDataObject.assetIndex);
                 this.transition();
                 this.startInterval();
+                // restart progress bar
+                this.progressBarAnimation.finish();
+                this.progressBarAnimation.play();
             }
         });
         // this.galleryNoCaptionVideo = gallery.querySelector('> .video');
     }
+    //
     // instance methods
-    /* Function to setinterval for gallery to loop through assetIds array
-        - setinterval is cleared when user hovers over gallery
-        - setinterval is cleared when user clicks next or previous button
-        - setinterval is cleared when user clicks thumbnail button
-        - setinterval is cleared when user clicks pause button
-        - setinterval is set when user clicks play button
-        - at each interval the next image is loaded into the transition containers
-    */
+    //
     getDelay() {
         return this.#galleryDataObject.intervalDelay;
     }
     setDelay(delay) {
         this.#galleryDataObject.intervalDelay = delay;
     }
-
-    /* Function to set the gallery to a specific image
-        - the gallery is paused
-        - the gallery is set to the specified image
-        - the gallery is played
-    */
-    setImage(index) {
-        // pause the gallery
-        pause();
-        // set the gallery to the specified image
-        loadImage(index);
-        // play the gallery
-        play();
+    // media controller methods
+    play() {
+        // reset the gallery interval
+        clearInterval(this.#galleryDataObject.interval);
+        // restart progress bar
+        this.progressBarAnimation.finish();
+        this.progressBarAnimation.play();
+        this.startInterval();
+        // update the gallery media controller
+        this.galleryMediaController.dataset.state = "playing";
     }
     pause() {
+        // clear the gallery interval
+        clearInterval(this.#galleryDataObject.interval);
         // pause the gallery
         this.#galleryDataObject.running = false;
-        // console.log(this.#galleryDataObject.running);
-        // clear the gallery interval
-        clearInterval(this.#galleryDataObject.interval);
+        // check if the progress bar animation is running and cancel it
+        if (this.progressBarAnimation.playState === "running") {
+            this.progressBarAnimation.finish();
+        }
         // update the gallery media controller
-        // console.log(this.galleryMediaController);
         this.galleryMediaController.dataset.state = "paused";
-    }
-    next() {
-        // clear the gallery interval
-        clearInterval(this.#galleryDataObject.interval);
-        // set the gallery to the next image
-        this.#galleryDataObject.assetIndex++;
-        if (this.#galleryDataObject.assetIndex >= this.#galleryDataObject.assetIds.length) {
-            this.#galleryDataObject.assetIndex = 0;
-        }
-        this.loadImage(this.#galleryDataObject.assetIndex);
-        this.transition();
-        this.startInterval();
-    }
-    previous() {
-        // clear the gallery interval
-        clearInterval(this.#galleryDataObject.interval);
-        // set the gallery to the previous image
-        this.#galleryDataObject.assetIndex--;
-        if (this.#galleryDataObject.assetIndex < 0) {
-            this.#galleryDataObject.assetIndex = this.#galleryDataObject.assetIds.length - 1;
-        }
-        this.loadImage(this.#galleryDataObject.assetIndex);
-        this.transition();
-        this.startInterval();
-    }
-    play() {
-        // play the gallery
-        this.#galleryDataObject.running = true;
-        // console.log(this.#galleryDataObject.running);
-        // set the gallery interval
-        clearInterval(this.#galleryDataObject.interval);
-        this.startInterval();
-        // update the gallery media controller
-        // console.log(this.galleryMediaController);
-        this.galleryMediaController.dataset.state = "playing";
+        // console.log(this.galleryMediaController.dataset.state);
     }
     togglePlayPause() {
         // toggle the gallery play/pause
@@ -184,6 +152,47 @@ class GalleryPlayer {
             this.play();
         }
     }
+    next() {
+        // clear the gallery interval
+        clearInterval(this.#galleryDataObject.interval);
+        this.#galleryDataObject.running = false;
+        // check if the progress bar animation is running and cancel it
+        if (this.progressBarAnimation.playState === "running") {
+            this.progressBarAnimation.finish();
+        }
+        // set the gallery to the next image
+        this.#galleryDataObject.assetIndex++;
+        if (this.#galleryDataObject.assetIndex >= this.#galleryDataObject.assetIds.length) {
+            this.#galleryDataObject.assetIndex = 0;
+        }
+        this.loadImage(this.#galleryDataObject.assetIndex);
+        // restart progress bar
+        this.progressBarAnimation.finish();
+        this.progressBarAnimation.play();
+        this.transition();
+        this.startInterval();
+    }
+    previous() {
+        // clear the gallery interval
+        clearInterval(this.#galleryDataObject.interval);
+        this.#galleryDataObject.running = false;
+        // check if the progress bar animation is running and cancel it
+        if (this.progressBarAnimation.playState === "running") {
+            this.progressBarAnimation.finish();
+        }
+        // set the gallery to the previous image
+        this.#galleryDataObject.assetIndex--;
+        if (this.#galleryDataObject.assetIndex < 0) {
+            this.#galleryDataObject.assetIndex = this.#galleryDataObject.assetIds.length - 1;
+        }
+        this.loadImage(this.#galleryDataObject.assetIndex);
+        // restart progress bar
+        this.progressBarAnimation.finish();
+        this.progressBarAnimation.play();
+        this.transition();
+        this.startInterval();
+    }
+    // gallery methods
     loadImage(index) {
         // set the gallery to the specified image
         this.#galleryDataObject.assetIndex = index;
@@ -233,10 +242,15 @@ class GalleryPlayer {
         // set thumbnail
         this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).setAttribute("aria-pressed", "true");
     }
+    // gallery transition methods
     startInterval() {
         if (this.#galleryDataObject.interval) {
             clearInterval(this.#galleryDataObject.interval);
+            this.#galleryDataObject.running = false;
         }
+        this.#galleryDataObject.running = true;
+        this.galleryMediaController.dataset.state = "playing";
+        // set the gallery interval
         this.#galleryDataObject.interval = setInterval(() => {
             // trans// set the next image in the gallery or loop back to the first image
             this.#galleryDataObject.assetIndex = (this.#galleryDataObject.assetIndex + 1) % this.#galleryDataObject.assetIds.length;
@@ -246,7 +260,9 @@ class GalleryPlayer {
             this.figureTransitionJpg.style.opacity = 0;
             this.setTransitionImageSrc(this.#galleryDataObject.assetIndex);
             this.transition();
-            this.animateProgressBar(this.#galleryDataObject.intervalDelay);
+            // start progress bar
+            this.progressBarAnimation.finish();
+            this.progressBarAnimation.play();
         }, this.#galleryDataObject.intervalDelay);
     }
     transition() {
@@ -267,13 +283,6 @@ class GalleryPlayer {
             // set the transition image to the next image in the gallery
         });
     }
-    animateProgressBar(duration) {
-        this.galleryProgressBar.style.width = "1%";
-        this.galleryProgressBar.animate([{ width: "1%" }, { width: "100%" }], {
-            duration: duration,
-            fill: "forwards",
-        });
-    }
     // initialize the gallery
     init() {
         // set .cpt-gallery-api instance to active
@@ -282,6 +291,11 @@ class GalleryPlayer {
         this.figureTransitionJpg.style.opacity = 0;
         // initialize the interval
         this.startInterval();
+        // set the active thumbnail
+        this.setActiveThumbnail(this.#galleryDataObject.assetIndex);
+        // restart progress bar
+        this.progressBarAnimation.finish();
+        this.progressBarAnimation.play();
     }
 }
 for (let galleryIDString in window.galleryData) {
