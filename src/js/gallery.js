@@ -73,7 +73,7 @@ class GalleryPlayer {
         this.galleryTransitionCaption = this.galleryImage.querySelector('.caption div[data-view="transition"]');
 
         // progress bar
-        this.galleryProgressBar = this.gallery.querySelector(".progress-bar");
+        this.galleryProgressBar = this.gallery.querySelector(".progress > .progress-bar");
         this.galleryImage.addEventListener("mouseenter", () => {
             this.pause();
         });
@@ -246,7 +246,7 @@ class GalleryPlayer {
             this.figureTransitionJpg.style.opacity = 0;
             this.setTransitionImageSrc(this.#galleryDataObject.assetIndex);
             this.transition();
-            this.resetProgressBar(this.#galleryDataObject.intervalDelay);
+            this.animateProgressBar(this.#galleryDataObject.intervalDelay);
         }, this.#galleryDataObject.intervalDelay);
     }
     transition() {
@@ -267,20 +267,12 @@ class GalleryPlayer {
             // set the transition image to the next image in the gallery
         });
     }
-    resetProgressBar(duration) {
-        let durationSeconds = duration / 1000;
-        // reset the progress bar
-        let progressValue = 0;
-        let progressInterval = setInterval(() => {
-            progressValue += 0.05;
-            if ((progressValue / durationSeconds) * 100 >= 100) {
-                clearInterval(progressInterval);
-            }
-            this.galleryProgressBar.querySelector("progress").value = (progressValue / durationSeconds) * 100;
-            this.galleryProgressBar.querySelector(`#progress-alert-${this.#galleryDataObject.galleryId}`).innerHTML = `${Math.round(
-                (progressValue / durationSeconds) * 100
-            )}%`;
-        }, 100);
+    animateProgressBar(duration) {
+        this.galleryProgressBar.style.width = "1%";
+        this.galleryProgressBar.animate([{ width: "1%" }, { width: "100%" }], {
+            duration: duration,
+            fill: "forwards",
+        });
     }
     // initialize the gallery
     init() {

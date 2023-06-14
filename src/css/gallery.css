@@ -58,14 +58,14 @@
 .media-controller[data-state="paused"] button.media-play-pause .icon.i-media-play {
     display: none;
 }
-.gallery-viewer .progress-bar {
+.gallery-viewer .progress {
     z-index: 8;
-    align-self: self-start;
+    align-self: self-end;
     width: 100%;
 }
-.gallery-viewer .progress-bar progress {
+.gallery-viewer .progress-bar {
     height: 0.5rem;
-    width: 100%;
+    width: 0%;
     background: var(--color-foreground);
 }
 /* .gallery-viewer picture[data-view="background"] {
