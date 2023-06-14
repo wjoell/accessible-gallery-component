@@ -404,7 +404,7 @@
                             type="image/webp" />
                         <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
                             srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
-                            alt=" " height="2832" width="4256"
+                            alt="something" height="2832" width="4256"
                             sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
                             data-view="transition" />
                     </picture>
@@ -415,7 +415,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="media-controller">
+                <div class="media-controller" data-state="playing">
                     <button aria-label="Previous image" class="media-prev">
                         <span class="icon i-media-prev">
                             <svg xmlns="http://www.w3.org/2000/svg" class="i-media-prev" role="presentation"
@@ -461,6 +461,14 @@
                             </svg>
                         </span>
                     </button>
+                </div>
+                <div class="progress-bar">
+                    <progress aria-label="transtion timer progress" class="interval-progress" class="uam" max="100"
+                        value="0" data-timeout="1000" data-alert="progress-alert-199">
+                    </progress>
+                    <strong class="sr-only" id="progress-alert-199" aria-live="polite" aria-atomic="true" role="alert">
+                        0%
+                    </strong>
                 </div>
             </div>
             <div class="gallery-thumbnails" data-count="13">
