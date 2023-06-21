@@ -20,7 +20,7 @@
 
         <!-- .cpt-gallery written by Cascade server with data-* values set by data def values -->
         <div class="component cpt-gallery-api" data-aspect-ratio="2" data-captions="yes" data-controls="true"
-            data-display-type="photo-gallery" data-img-fit="cover" data-mode="static">
+            data-display-type="photo-gallery" data-fullscreen="false" data-img-fit="cover" data-mode="static">
             <!-- 
                 data-mode updated by JS to "active"
         
@@ -73,7 +73,7 @@
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg",
                             "alt": "",
-                            "caption": "",
+                            "caption": "Main\u0020entrance\u0020to\u0020the\u0020Heimbold\u0020Visual\u0020arts\u0020center",
                             "intrinsicWidth": "4256",
                             "intrinsicHeight": "2832"
                         },
@@ -123,7 +123,7 @@
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/P7XFYC5DQ2RF.jpg",
                             "alt": "",
-                            "caption": "",
+                            "caption": "Cocktail\u0020tables\u0020set\u0020up\u0020in\u0020the\u0020atrium",
                             "intrinsicWidth": "4256",
                             "intrinsicHeight": "2832"
                         },
@@ -147,7 +147,7 @@
                             },
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/KGMVJB123SMX.jpg",
-                            "alt": "",
+                            "alt": "Sunset\u0020reflected\u0020in\u0020the\u0020grid\u0020of\u0020windows\u0020and\u0020overhead\u0020doors\u0020of\u0020a\u0020large\u0020two\u002Dstory\u0020building",
                             "caption": "",
                             "intrinsicWidth": "5970",
                             "intrinsicHeight": "3980"
@@ -172,8 +172,8 @@
                             },
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/5H9Y4RXNYMQW.jpg",
-                            "alt": "",
-                            "caption": "",
+                            "alt": "long\u0020concrete\u0020wheelchair\u0020accessible\u0020ramp\u0020leading\u0020up\u0020to\u0020double\u0020doors",
+                            "caption": "The\u0020entrance\u0020to\u0020the\u0020Heimbold\u0020is\u0020fully\u0020wheelchair\u0020accessible",
                             "intrinsicWidth": "5616",
                             "intrinsicHeight": "3744"
                         },
@@ -197,8 +197,8 @@
                             },
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/J8MXDWC4MCTR.jpg",
-                            "alt": "",
-                            "caption": "",
+                            "alt": "large\u0020two\u0020story\u0020building\u0020made\u0020of\u0020aluminum,\u0020glass,\u0020and\u0020wood\u0020with\u0020a\u0020large\u0020grassy\u0020area\u0020in\u0020front",
+                            "caption": "The\u0020Heimbold\u0020entrance\u0020is\u0020situated\u0020on\u0020large\u0020circular\u0020driveway\u0020and\u0020features\u0020several\u0020open\u0020spaces\u0020including\u0020a\u0020terraced\u0020lawn",
                             "intrinsicWidth": "2784",
                             "intrinsicHeight": "1848"
                         },
@@ -223,7 +223,7 @@
                             "modalSizes": "(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (max-width: 1679px) 1440px, (min-width: 1680px) 1920px",
                             "src": "https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/391MT55GX3FD.jpg",
                             "alt": "",
-                            "caption": "",
+                            "caption": "The\u0020Donnelly\u0020theatre\u0020seats",
                             "intrinsicWidth": "5520",
                             "intrinsicHeight": "3680"
                         },
@@ -380,9 +380,9 @@
                     }
                 }
             </script>
-            <div class="gallery-viewer" data-captioned="false" data-gallery-id="199">
-                <div class="figure" data-next-captioned="">
-                    <picture data-view="background">
+            <div class="gallery-viewer" data-captioned="true" data-gallery-id="199">
+                <div class="figure" data-view="background" role="none">
+                    <picture>
                         <source
                             srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
                             type="image/avif" />
@@ -395,7 +395,13 @@
                             sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
                             data-view="background" />
                     </picture>
-                    <picture data-view="transition">
+                    <div class="caption">
+                        <div>
+                            Main entrance to the Heimbold Visual arts center </div>
+                    </div>
+                </div>
+                <div class="figure" data-view="transition">
+                    <picture>
                         <source
                             srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.avif 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.avif 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.avif 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.avif 1440w"
                             type="image/avif" />
@@ -404,18 +410,16 @@
                             type="image/webp" />
                         <img src="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg"
                             srcset="https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_sm/pub-api/2021/08/ZVN2ZCNCM58B.jpg 480w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_md/pub-api/2021/08/ZVN2ZCNCM58B.jpg 760w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_lg/pub-api/2021/08/ZVN2ZCNCM58B.jpg 992w, https://res.cloudinary.com/sarah-lawrence-college/image/upload/t_auto_hero_wide/pub-api/2021/08/ZVN2ZCNCM58B.jpg 1440w"
-                            alt="something" height="2832" width="4256"
+                            alt=" " height="2832" width="4256"
                             sizes="(max-width: 480px) 480px, (max-width: 760px) 760px, (max-width: 992px) 992px, (min-width: 993px) 1440px"
                             data-view="transition" />
                     </picture>
                     <div class="caption" id="caption-199">
-                        <div data-view="background" role="none">
-                        </div>
                         <div data-view="transition">
-                        </div>
+                            Main entrance to the Heimbold Visual arts center </div>
                     </div>
                 </div>
-                <div class="media-controller" data-state="playing">
+                <div class="media-controller">
                     <button aria-label="Previous image" class="media-prev">
                         <span class="icon i-media-prev">
                             <svg xmlns="http://www.w3.org/2000/svg" class="i-media-prev" role="presentation"
@@ -461,8 +465,34 @@
                             </svg>
                         </span>
                     </button>
+                    <button aria-label="View full screen" class="media-fullscreen">
+                        <span class="icon i-media-open-fullscreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-open-fullscreen" role="presentation"
+                                viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" />
+                                <g>
+                                    <polygon points="52.5,30 70,30 70,47.5 79,47.5 79,21 52.5,21" />
+                                    <polygon points="70,52.5 70,70 52.5,70 52.5,79 79,79 79,52.5" />
+                                    <polygon points="30,47.5 30,30 47.5,30 47.5,21 21,21 21,47.5" />
+                                    <polygon points="47.5,70 30,70 30,52.5 21,52.5 21,79 47.5,79" />
+                                </g>
+                            </svg>
+                        </span>
+                        <span class="icon i-media-close-fullscreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-close-fullscreen" role="presentation"
+                                viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" />
+                                <g>
+                                    <polygon points="19,63.5 36.5,63.5 36.5,81 45.5,81 45.5,54.5 19,54.5" />
+                                    <polygon points="36.5,19 36.5,36.5 19,36.5 19,45.5 45.5,45.5 45.5,19" />
+                                    <polygon points="63.5,81 63.5,63.5 81,63.5 81,54.5 54.5,54.5 54.5,81" />
+                                    <polygon points="81,36.5 63.5,36.5 63.5,19 54.5,19 54.5,45.5 81,45.5" />
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
                 </div>
-                <div class="progress">
+                <div class="progress" role="presentation">
                     <div class="progress-bar"></div>
                 </div>
             </div>
