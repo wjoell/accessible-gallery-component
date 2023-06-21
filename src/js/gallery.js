@@ -44,6 +44,7 @@ class GalleryPlayer {
         this.#galleryDataObject.interval = false;
         this.#galleryDataObject.intervalDelay = 10 * 1000;
         this.#galleryDataObject.assetIndex = 0;
+        this.#galleryDataObject.fullscreen = false;
         // define dom elements for gallery
         this.gallery = galleryViewer;
 
@@ -62,15 +63,16 @@ class GalleryPlayer {
         this.galleryThumbnailButtons = this.galleryThumbnailContainer.querySelectorAll("button");
 
         // captioned version of image with background and transition containers
-        this.galleryImage = this.gallery.querySelector(".figure");
-        this.figureBackgroundAvif = this.galleryImage.querySelector('picture[data-view="background"] source[type="image/avif"]');
-        this.figureBackgroundWebp = this.galleryImage.querySelector('picture[data-view="background"] source[type="image/webp"]');
-        this.figureBackgroundJpg = this.galleryImage.querySelector('picture[data-view="background"] img');
-        this.figureTransitionAvif = this.galleryImage.querySelector('picture[data-view="transition"] source[type="image/avif"]');
-        this.figureTransitionWebp = this.galleryImage.querySelector('picture[data-view="transition"] source[type="image/webp"]');
-        this.figureTransitionJpg = this.galleryImage.querySelector('picture[data-view="transition"] img');
-        this.galleryBackgroundCaption = this.galleryImage.querySelector('.caption div[data-view="background"]');
-        this.galleryTransitionCaption = this.galleryImage.querySelector('.caption div[data-view="transition"]');
+        this.galleryBackgroundFigure = this.gallery.querySelector(".figure[data-view='background']");
+        this.figureBackgroundAvif = this.galleryBackgroundFigure.querySelector('source[type="image/avif"]');
+        this.figureBackgroundWebp = this.galleryBackgroundFigure.querySelector('source[type="image/webp"]');
+        this.figureBackgroundJpg = this.galleryBackgroundFigure.querySelector("img");
+        this.galleryFigure = this.gallery.querySelector(".figure[data-view='transition']");
+        this.figureTransitionAvif = this.galleryFigure.querySelector('source[type="image/avif"]');
+        this.figureTransitionWebp = this.galleryFigure.querySelector('source[type="image/webp"]');
+        this.figureTransitionJpg = this.galleryFigure.querySelector("img");
+        this.galleryBackgroundCaption = this.galleryBackgroundFigure.querySelector(".caption");
+        this.galleryTransitionCaption = this.galleryFigure.querySelector(".caption");
 
         // progress bar
         this.galleryProgressBar = this.gallery.querySelector(".progress > .progress-bar");
@@ -96,6 +98,9 @@ class GalleryPlayer {
             }
             if (event.target.closest(".media-prev")) {
                 this.previous();
+            }
+            if (event.target.closest(".media-fullscreen")) {
+                this.toggleFullscreen();
             }
             // console.log(event.target);
             if (event.target.closest("button.thumbnail")) {
@@ -152,6 +157,25 @@ class GalleryPlayer {
             this.play();
         }
     }
+    toggleFullscreen() {
+        // toggle the gallery fullscreen
+        if (this.#galleryDataObject.fullscreen) {
+            this.exitFullscreen();
+        } else {
+            this.enterFullscreen();
+        }
+    }
+    enterFullscreen() {
+        // enter fullscreen
+        this.#galleryDataObject.fullscreen = true;
+        this.gallery.closest(".cpt-gallery-api").requestFullscreen();
+    }
+    exitFullscreen() {
+        // exit fullscreen
+        this.#galleryDataObject.fullscreen = false;
+        document.exitFullscreen();
+    }
+
     next() {
         // clear the gallery interval
         clearInterval(this.#galleryDataObject.interval);
