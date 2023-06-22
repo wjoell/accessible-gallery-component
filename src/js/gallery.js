@@ -83,10 +83,10 @@ class GalleryPlayer {
         this.progressBarAnimation.pause();
 
         // set up event listeners
-        this.galleryImage.addEventListener("mouseenter", () => {
+        this.galleryFigure.addEventListener("mouseenter", () => {
             this.pause();
         });
-        this.galleryImage.addEventListener("mouseleave", () => {
+        this.galleryFigure.addEventListener("mouseleave", () => {
             this.play();
         });
         this.gallery.closest(".cpt-gallery-api").addEventListener("click", (event) => {
@@ -169,11 +169,13 @@ class GalleryPlayer {
         // enter fullscreen
         this.#galleryDataObject.fullscreen = true;
         this.gallery.closest(".cpt-gallery-api").requestFullscreen();
+        this.gallery.closest(".cpt-gallery-api").dataset.fullscreen = true;
     }
     exitFullscreen() {
         // exit fullscreen
         this.#galleryDataObject.fullscreen = false;
         document.exitFullscreen();
+        this.gallery.closest(".cpt-gallery-api").dataset.fullscreen = false;
     }
 
     next() {
@@ -218,13 +220,9 @@ class GalleryPlayer {
     }
     // gallery methods
     loadImage(index) {
-        // set the gallery to the specified image
         this.#galleryDataObject.assetIndex = index;
-        // set the gallery to the specified image
         this.setTransitionImageSrc(index);
-        // set the gallery to the specified image
         this.setTransitionImageCaption(index);
-        // set the gallery to the specified image
         this.setActiveThumbnail(index);
     }
     setTransitionImageSrc(index) {
@@ -235,6 +233,7 @@ class GalleryPlayer {
         this.figureTransitionWebp.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.webp;
         this.figureTransitionJpg.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.jpg;
         this.figureTransitionJpg.src = this.#galleryDataObject.assets[assetId].src;
+        this.figureTransitionJpg.alt = this.#galleryDataObject.assets[assetId].alt ?? "";
     }
     setBackgroundImageSrc(index) {
         // set key for assetId
@@ -249,7 +248,15 @@ class GalleryPlayer {
         // set key for assetId
         let assetId = this.#galleryDataObject.assetIds[index];
         // set transition caption if not null
-        this.galleryTransitionCaption.innerHTML = this.#galleryDataObject.assets[assetId].caption ?? "";
+        if (this.#galleryDataObject.assets[assetId].caption) {
+            this.galleryTransitionCaption.innerHTML = this.#galleryDataObject.assets[assetId].caption;
+            this.galleryFigure.setAttribute("aria-role", "figure");
+            this.galleryFigure.setAttribute("aria-labelledby", this.galleryTransitionCaption.id);
+        } else {
+            this.galleryTransitionCaption.innerHTML = "";
+            this.galleryFigure.removeAttribute("aria-role");
+            this.galleryFigure.removeAttribute("aria-labelledby");
+        }
     }
     setBackgroundImageCaption(index) {
         // set key for assetId
@@ -265,6 +272,12 @@ class GalleryPlayer {
         let assetId = this.#galleryDataObject.assetIds[index];
         // set thumbnail
         this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).setAttribute("aria-pressed", "true");
+        // scroll to active thumbnail
+        this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+        });
     }
     // gallery transition methods
     startInterval() {
@@ -281,8 +294,9 @@ class GalleryPlayer {
 
             // set the next image in the gallery
 
-            this.figureTransitionJpg.style.opacity = 0;
+            this.galleryFigure.style.opacity = 0;
             this.setTransitionImageSrc(this.#galleryDataObject.assetIndex);
+            this.setTransitionImageCaption(this.#galleryDataObject.assetIndex);
             this.transition();
             // start progress bar
             this.progressBarAnimation.finish();
@@ -291,13 +305,13 @@ class GalleryPlayer {
     }
     transition() {
         // animate the transition image
-        this.figureTransitionJpg.animate([{ opacity: 0 }, { opacity: 1 }], {
+        this.galleryFigure.animate([{ opacity: 0 }, { opacity: 1 }], {
             duration: 1000,
             easing: "ease-in-out",
             fill: "forwards",
         });
         this.setActiveThumbnail(this.#galleryDataObject.assetIndex);
-        Promise.all(this.figureTransitionJpg.getAnimations().map((animation) => animation.finished)).then(() => {
+        Promise.all(this.galleryFigure.getAnimations().map((animation) => animation.finished)).then(() => {
             // console.log("finished 1");
             // set the background image to the transition image
             this.setBackgroundImageSrc(this.#galleryDataObject.assetIndex);
@@ -312,7 +326,7 @@ class GalleryPlayer {
         // set .cpt-gallery-api instance to active
         this.gallery.closest(".cpt-gallery-api").dataset.mode = "active";
         // set the opacity of the transition image to 0
-        this.figureTransitionJpg.style.opacity = 0;
+        this.galleryFigure.style.opacity = 0;
         // initialize the interval
         this.startInterval();
         // set the active thumbnail
