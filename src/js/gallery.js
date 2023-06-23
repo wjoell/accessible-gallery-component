@@ -89,6 +89,19 @@ class GalleryPlayer {
         this.galleryFigure.addEventListener("mouseleave", () => {
             this.play();
         });
+        // if this.#galleryDataObject.fullscreen is true set to false when esc key is pressed
+        document.addEventListener("fullscreenchange", () => {
+            if (!document.fullscreenElement) {
+                this.#galleryDataObject.fullscreen = false;
+                this.gallery.closest(".cpt-gallery-api").dataset.fullscreen = false;
+            }
+        });
+        document.addEventListener("webkitfullscreenchange", () => {
+            if (!document.webkitFullscreenElement) {
+                this.#galleryDataObject.fullscreen = false;
+                this.gallery.closest(".cpt-gallery-api").dataset.fullscreen = false;
+            }
+        });
         this.gallery.closest(".cpt-gallery-api").addEventListener("click", (event) => {
             if (event.target.closest(".media-play-pause")) {
                 this.togglePlayPause();
