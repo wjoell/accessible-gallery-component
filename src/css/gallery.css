@@ -39,11 +39,12 @@ body {
 }
 .gallery-viewer .figure picture,
 .gallery-viewer .figure picture img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 3/2; /* using a taller aspect ratio to test max height */
     object-fit: cover;
-    max-height: calc(100vh - var(--offset));
+    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em));
+    justify-self: center;
 }
 .media-controller {
     align-self: self-end;
