@@ -93,14 +93,14 @@ body {
     background: var(--gallery-theme-foreground);
     opacity: 0.7;
 }
-.gallery-viewer[data-captioned="true"] .progress,
-.gallery-viewer[data-captioned="true"] .media-controller {
+[data-captions="yes"] .progress,
+[data-captions="yes"] .media-controller {
     align-self: self-start;
 }
-.gallery-viewer[data-captioned="true"] .media-controller {
+[data-captions="yes"] .media-controller {
     justify-content: flex-end;
 }
-.gallery-viewer[data-captioned="true"] .caption:not(:empty) {
+[data-captions="yes"] .caption:not(:empty) {
     align-self: self-end;
     position: relative;
     z-index: auto;
