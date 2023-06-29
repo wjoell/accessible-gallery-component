@@ -350,10 +350,29 @@ class GalleryPlayer {
     }
 }
 for (let galleryIDString in window.galleryData) {
-    window.galleryData[galleryIDString].player = new GalleryPlayer(
-        window.galleryData[galleryIDString],
-        galleryIDString,
-        document.querySelector(`.gallery-viewer[data-gallery-id="${galleryIDString}"]`)
+    // create an intersection observer for each gallery-viewer container that pauses the gallery if it leaves the viewport and waits to initialize the gallery until it enters the viewport
+    window.galleryData[galleryIDString].galleryObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (!window.galleryData[galleryIDString].player) {
+                        window.galleryData[galleryIDString].player = new GalleryPlayer(
+                            window.galleryData[galleryIDString],
+                            galleryIDString,
+                            document.querySelector(`.gallery-viewer[data-gallery-id="${galleryIDString}"]`)
+                        );
+                        window.galleryData[galleryIDString].player.init();
+                    } else {
+                        window.galleryData[galleryIDString].player.play();
+                    }
+                } else {
+                    if (window.galleryData[galleryIDString].player) {
+                        window.galleryData[galleryIDString].player.pause();
+                    }
+                }
+            });
+        }
+        // { threshold: 0.5 }
     );
-    window.galleryData[galleryIDString].player.init();
+    window.galleryData[galleryIDString].galleryObserver.observe(document.querySelector(`.gallery-viewer[data-gallery-id="${galleryIDString}"]`));
 }
