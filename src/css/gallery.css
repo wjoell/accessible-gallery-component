@@ -147,3 +147,6 @@ button[aria-pressed="true"] {
 .cpt-gallery-api button:hover {
     cursor: pointer;
 }
+.cpt-content :is(h1, h2, p) {
+    margin-bottom: 1lh;
+}
