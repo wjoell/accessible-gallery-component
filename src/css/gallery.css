@@ -8,21 +8,43 @@ body {
 :root {
     --gallery-theme-background: #000;
     --gallery-theme-foreground: #fff;
+    /* --thumbnail-offset: clamp(5rem, 10rem, 10dvh); */
     --thumbnail-offset: 10rem;
+    --aspect-ratio: 3/2;
 }
 .cpt-gallery-api {
     display: grid;
     grid-template-areas: "viewer" "thumbnails";
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
+    outline: 3px solid fuchsia;
+    /* width: 100%; */
     /* max-height: calc(100vh - var(--offset)); */
 }
+.cpt-gallery-api[data-aspect-ratio="2"] {
+    --aspect-ratio: 2/1;
+}
+.cpt-gallery-api[data-aspect-ratio="3"] {
+    --aspect-ratio: 3/1;
+}
+.cpt-gallery-api[data-aspect-ratio="1.78"] {
+    --aspect-ratio: 16/9;
+}
+.cpt-gallery-api[data-aspect-ratio="1.5"] {
+    --aspect-ratio: 3/2;
+}
+.cpt-gallery-api[data-aspect-ratio="1.33"] {
+    --aspect-ratio: 4/3;
+}
+
 .cpt-gallery-api .gallery-viewer {
     grid-area: viewer;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    /* max-height: calc(100vh - var(--offset)); */
+    aspect-ratio: var(--aspect-ratio);
+    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em));
+    /* outline: 5px solid cornflowerblue; */
 }
 .gallery-viewer > * {
     grid-column: 1 / -1;
@@ -34,19 +56,25 @@ body {
     grid-template-rows: 1fr;
     position: relative;
     align-self: center;
-    /* max-height: calc(100vh - var(--offset)); */
+    aspect-ratio: var(--aspect-ratio);
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    /* outline: 3px solid lime;
+    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em)); */
 }
 .gallery-viewer > .figure > * {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
+    /* outline: 1px solid red; */
 }
 .gallery-viewer .figure picture,
 .gallery-viewer .figure picture img {
     width: auto;
     height: 100%;
-    aspect-ratio: 3/2; /* using a taller aspect ratio to test max height */
+    aspect-ratio: var(--aspect-ratio);
     object-fit: cover;
-    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em));
+    /* max-height: calc(100dvh - (var(--thumbnail-offset) + 2em)); */
     justify-self: center;
 }
 .media-controller {
@@ -131,12 +159,13 @@ body {
     background: transparent;
     padding: 0;
     margin: 0;
-    flex-basis: var(--thumbnail-offset);
+    /* flex-basis: var(--thumbnail-offset); */
     aspect-ratio: 1;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 10dvh;
 }
 .gallery-thumbnails button img {
     width: 100%;
