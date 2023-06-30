@@ -57,7 +57,10 @@ class GalleryPlayer {
         this.galleryPlayPauseButton = this.galleryMediaController.querySelector(".media-play-pause");
         this.galleryNextButton = this.galleryMediaController.querySelector(".media-next");
         this.galleryPreviousButton = this.galleryMediaController.querySelector(".media-prev");
-
+        this.galleryFullscreenButton = this.galleryMediaController.querySelector(".media-fullscreen");
+        if (!document.fullscreenEnabled) {
+            this.galleryFullscreenButton.style.display = "none";
+        }
         // gallery thumbnail container
         this.galleryThumbnailContainer = this.gallery.closest(".cpt-gallery-api").querySelector(".gallery-thumbnails");
         this.galleryThumbnailButtons = this.galleryThumbnailContainer.querySelectorAll("button");
