@@ -249,6 +249,8 @@ class GalleryPlayer {
         this.figureTransitionWebp.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.webp;
         this.figureTransitionJpg.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.jpg;
         this.figureTransitionJpg.src = this.#galleryDataObject.assets[assetId].src;
+        this.figureTransitionJpg.height = this.#galleryDataObject.assets[assetId].intrinsicHeight;
+        this.figureTransitionJpg.width = this.#galleryDataObject.assets[assetId].intrinsicWidth;
         this.figureTransitionJpg.alt = this.#galleryDataObject.assets[assetId].alt ?? "";
     }
     setBackgroundImageSrc(index) {
@@ -259,6 +261,8 @@ class GalleryPlayer {
         this.figureBackgroundWebp.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.webp;
         this.figureBackgroundJpg.srcset = this.#galleryDataObject.assets[assetId].inlineFormats.jpg;
         this.figureBackgroundJpg.src = this.#galleryDataObject.assets[assetId].src;
+        this.figureBackgroundJpg.height = this.#galleryDataObject.assets[assetId].intrinsicHeight;
+        this.figureBackgroundJpg.width = this.#galleryDataObject.assets[assetId].intrinsicWidth;
     }
     setTransitionImageCaption(index) {
         // set key for assetId
