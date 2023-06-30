@@ -1,6 +1,9 @@
 /* Gallery component layout */
 body {
     box-sizing: border-box;
+    font-size: 100%;
+    line-height: 1.4;
+    margin: 1em;
 }
 :root {
     --gallery-theme-background: #000;
@@ -149,4 +152,5 @@ button[aria-pressed="true"] {
 }
 .cpt-content :is(h1, h2, p) {
     margin-bottom: 1lh;
+    max-width: 60ch;
 }
