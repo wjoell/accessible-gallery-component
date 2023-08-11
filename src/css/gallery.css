@@ -8,8 +8,8 @@ body {
 :root {
     --gallery-theme-background: #000;
     --gallery-theme-foreground: #fff;
-    /* --thumbnail-offset: clamp(5rem, 10rem, 10dvh); */
-    --thumbnail-offset: 10rem;
+    --thumbnail-offset: clamp(5rem, 10rem, 10dvh);
+    /* --thumbnail-offset: 10rem; */
     --aspect-ratio: 3/2;
 }
 .cpt-gallery-api {
@@ -131,12 +131,20 @@ body {
 [data-captions="yes"] .media-controller {
     justify-content: flex-end;
 }
-[data-captions="yes"] .caption:not(:empty) {
+[data-captions="yes"] .caption {
     align-self: self-end;
-    position: relative;
-    z-index: auto;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
+    bottom: 0;
+    left: 0;
     padding: 0.5rem;
+    position: absolute;
+    right: 0;
+    white-space: wrap;
+    z-index: auto;
+}
+[data-captions="no"] .caption,
+[data-captions="yes"] .caption:empty {
+    display: none;
 }
 /* .gallery-viewer picture[data-view="background"] {
     z-index: 0;
@@ -152,6 +160,7 @@ body {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
+    max-width: 100%;
     width: 100%;
 }
 .gallery-thumbnails button {
