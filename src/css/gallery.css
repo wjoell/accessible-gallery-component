@@ -5,14 +5,12 @@ body {
     line-height: 1.4;
     margin: 1em;
 }
-:root {
+.cpt-gallery-api {
     --gallery-theme-background: #000;
     --gallery-theme-foreground: #fff;
     --thumbnail-offset: clamp(5rem, 10rem, 10dvh);
     /* --thumbnail-offset: 10rem; */
     --aspect-ratio: 3/2;
-}
-.cpt-gallery-api {
     /* display: grid; */
     /* grid-template-areas: "viewer" "thumbnails"; */
     /* grid-template-rows: 1fr auto; */
