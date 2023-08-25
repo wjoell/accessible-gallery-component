@@ -115,6 +115,7 @@ body {
     align-self: self-end;
     width: 100%;
     position: relative;
+    background-color: rgba(0 0 0 / 0.5);
 }
 .gallery-viewer .progress-bar {
     height: 0.5rem;
