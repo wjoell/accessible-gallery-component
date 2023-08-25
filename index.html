@@ -421,18 +421,6 @@
                     </div>
                 </div>
                 <div class="media-controller">
-                    <button aria-label="Previous image" class="media-prev">
-                        <span class="icon i-media-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-prev" role="presentation"
-                                viewBox="0 0 100 100">
-                                <circle class="bg" cx="50" cy="50" r="50"></circle>
-                                <g class="symbol">
-                                    <path d="M80,25L40,50l40,25V25z"></path>
-                                    <path d="M20,75h15V50V25H20V75z"></path>
-                                </g>
-                            </svg>
-                        </span>
-                    </button>
                     <button aria-label="Pause media" data-button-state="playing" class="media-play-pause">
                         <span class="icon i-media-play">
                             <svg xmlns="http://www.w3.org/2000/svg" class="i-media-play" role="presentation"
@@ -454,44 +442,88 @@
                             </svg>
                         </span>
                     </button>
-                    <button aria-label="Next image" class="media-next">
-                        <span class="icon i-media-next">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-next" role="presentation"
-                                viewBox="0 0 100 100">
-                                <circle class="bg" cx="50" cy="50" r="50"></circle>
-                                <g class="symbol">
-                                    <path d="M20,75l40-25L20,25V75z"></path>
-                                    <path d="M80,25H65v25v25h15V25z"></path>
+                    <button class="more-menu" aria-label="open additional controls and features" aria-expanded="false">
+                        <span class="i-gallery-menu">
+                            <svg class="icn-gallery-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                role="presentation">
+                                <circle cx="50" cy="50" r="50" />
+                                <g class="close" hidden="" fill="#fff">
+                                    <path class="st1" d="M75.3,31l-6.6-6.6L24.7,68.3l6.6,6.6L75.3,31z" />
+                                    <path class="st1" d="M31.4,24.4L24.7,31L68.6,75l6.6-6.6L31.4,24.4z" />
+                                </g>
+                                <g class="more" fill="#fff">
+                                    <circle class="st2" cx="50" cy="50" r="7.5" />
+                                    <circle class="st2" cx="50" cy="25" r="7.5" />
+                                    <circle class="st2" cx="50" cy="75" r="7.5" />
                                 </g>
                             </svg>
                         </span>
                     </button>
-                    <button aria-label="View full screen" class="media-fullscreen">
-                        <span class="icon i-media-open-fullscreen">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-open-fullscreen" role="presentation"
-                                viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="50" />
-                                <g>
-                                    <polygon points="52.5,30 70,30 70,47.5 79,47.5 79,21 52.5,21" />
-                                    <polygon points="70,52.5 70,70 52.5,70 52.5,79 79,79 79,52.5" />
-                                    <polygon points="30,47.5 30,30 47.5,30 47.5,21 21,21 21,47.5" />
-                                    <polygon points="47.5,70 30,70 30,52.5 21,52.5 21,79 47.5,79" />
-                                </g>
-                            </svg>
-                        </span>
-                        <span class="icon i-media-close-fullscreen">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="i-media-close-fullscreen" role="presentation"
-                                viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="50" />
-                                <g>
-                                    <polygon points="19,63.5 36.5,63.5 36.5,81 45.5,81 45.5,54.5 19,54.5" />
-                                    <polygon points="36.5,19 36.5,36.5 19,36.5 19,45.5 45.5,45.5 45.5,19" />
-                                    <polygon points="63.5,81 63.5,63.5 81,63.5 81,54.5 54.5,54.5 54.5,81" />
-                                    <polygon points="81,36.5 63.5,36.5 63.5,19 54.5,19 54.5,45.5 81,45.5" />
-                                </g>
-                            </svg>
-                        </span>
-                    </button>
+                    <div class="additional-controls" hidden="">
+                        <button aria-label="Previous image" class="media-prev">
+                            <span class="icon i-media-prev">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="i-media-prev" role="presentation"
+                                    viewBox="0 0 100 100">
+                                    <circle class="bg" cx="50" cy="50" r="50"></circle>
+                                    <g class="symbol" fill="#fff">
+                                        <path d="M80,25L40,50l40,25V25z"></path>
+                                        <path d="M20,75h15V50V25H20V75z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                        <button aria-label="Next image" class="media-next">
+                            <span class="icon i-media-next">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="i-media-next" role="presentation"
+                                    viewBox="0 0 100 100">
+                                    <circle class="bg" cx="50" cy="50" r="50"></circle>
+                                    <g class="symbol" fill="#fff">
+                                        <path d="M20,75l40-25L20,25V75z"></path>
+                                        <path d="M80,25H65v25v25h15V25z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                        <button aria-label="View full screen" class="media-fullscreen" hidden="">
+                            <span class="icon i-media-open-fullscreen">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="i-media-open-fullscreen"
+                                    role="presentation" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50" />
+                                    <g fill="#fff">
+                                        <polygon points="52.5,30 70,30 70,47.5 79,47.5 79,21 52.5,21" />
+                                        <polygon points="70,52.5 70,70 52.5,70 52.5,79 79,79 79,52.5" />
+                                        <polygon points="30,47.5 30,30 47.5,30 47.5,21 21,21 21,47.5" />
+                                        <polygon points="47.5,70 30,70 30,52.5 21,52.5 21,79 47.5,79" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <span class="icon i-media-close-fullscreen">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="i-media-close-fullscreen"
+                                    role="presentation" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50" />
+                                    <g fill="#fff">
+                                        <polygon points="19,63.5 36.5,63.5 36.5,81 45.5,81 45.5,54.5 19,54.5" />
+                                        <polygon points="36.5,19 36.5,36.5 19,36.5 19,45.5 45.5,45.5 45.5,19" />
+                                        <polygon points="63.5,81 63.5,63.5 81,63.5 81,54.5 54.5,54.5 54.5,81" />
+                                        <polygon points="81,36.5 63.5,36.5 63.5,19 54.5,19 54.5,45.5 81,45.5" />
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                        <button aria-label="download gallery" class="gallery-download" hidden="">
+                            <span class="icon i-gallery-download">
+                                <svg class="i-gallery-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                    role="presentation">
+                                    <circle cx="50" cy="50" r="50" />
+                                    <g fill="#fff" class="down-arrow">
+                                        <polygon
+                                            points="68.7,54.2 50,72.8 31.4,54.2 24.7,60.8 43.3,79.5 49.9,86.1 56.6,79.4 75.3,60.8 	" />
+                                        <path d="M45.2,80.7l9.4,0.1l0.1-62.2h-9.3L45.2,80.7z" />
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
                 </div>
                 <div class="progress" role="presentation">
                     <div class="progress-bar"></div>
