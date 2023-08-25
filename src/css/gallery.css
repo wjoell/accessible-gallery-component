@@ -11,6 +11,7 @@ body {
 .cpt-gallery-api {
     --gallery-theme-background: #000;
     --gallery-theme-foreground: #fff;
+    --gallery-theme-accent: rgba(255, 0, 0, 0.6);
     --thumbnail-offset: clamp(5rem, 10rem, 10dvh);
     /* --thumbnail-offset: 10rem; */
     --aspect-ratio: 3/2;
@@ -184,7 +185,7 @@ body {
     object-fit: cover;
 }
 button[aria-pressed="true"] {
-    outline: 1em solid rgba(255, 0, 0, 0.6);
+    outline: 1em solid var(--gallery-theme-accent);
     outline-offset: -1em;
 }
 .cpt-gallery-api button:hover {
