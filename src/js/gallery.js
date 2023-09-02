@@ -45,8 +45,14 @@ class GalleryPlayer {
         this.#galleryDataObject.intervalDelay = 10 * 1000;
         this.#galleryDataObject.assetIndex = 0;
         this.#galleryDataObject.fullscreen = false;
-        // define dom elements for gallery
+        // define dom elements and attributes for gallery
         this.gallery = galleryViewer;
+        this.galleryCaptionsEnabled = this.gallery.closest(".cpt-gallery-api").dataset.captions;
+        if (this.galleryCaptionsEnabled === "true") {
+            this.#galleryDataObject.captions = true;
+        } else {
+            this.#galleryDataObject.captions = false;
+        }
 
         // test for gallery element and raise error if not found
         if (!this.gallery) {
@@ -238,7 +244,9 @@ class GalleryPlayer {
     loadImage(index) {
         this.#galleryDataObject.assetIndex = index;
         this.setTransitionImageSrc(index);
-        this.setTransitionImageCaption(index);
+        if (this.#galleryDataObject.captions) {
+            this.setTransitionImageCaption(index);
+        }
         this.setActiveThumbnail(index);
     }
     setTransitionImageSrc(index) {
@@ -320,7 +328,9 @@ class GalleryPlayer {
 
             this.galleryFigure.style.opacity = 0;
             this.setTransitionImageSrc(this.#galleryDataObject.assetIndex);
-            this.setTransitionImageCaption(this.#galleryDataObject.assetIndex);
+            if (this.#galleryDataObject.captions) {
+                this.setTransitionImageCaption(this.#galleryDataObject.assetIndex);
+            }
             this.transition();
             // start progress bar
             this.progressBarAnimation.finish();
@@ -340,7 +350,9 @@ class GalleryPlayer {
             // set the background image to the transition image
             this.setBackgroundImageSrc(this.#galleryDataObject.assetIndex);
             // set the caption to the transition caption
-            this.setBackgroundImageCaption(this.#galleryDataObject.assetIndex);
+            if (this.#galleryDataObject.captions) {
+                this.setBackgroundImageCaption(this.#galleryDataObject.assetIndex);
+            }
             // set the thumbnail to the transition thumbnail
             // set the transition image to the next image in the gallery
         });
