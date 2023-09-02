@@ -84,12 +84,29 @@ body {
     z-index: 10;
     display: flex;
 }
+.media-controller .more-menu[aria-expanded="true"] g.close {
+    opacity: 1;
+}
+.media-controller .more-menu[aria-expanded="true"] g.more {
+    opacity: 0;
+}
+.media-controller .more-menu[aria-expanded="false"] g.close {
+    opacity: 0;
+}
+.media-controller .more-menu[aria-expanded="false"] g.more {
+    opacity: 1;
+}
+.media-controller .more-menu[aria-expanded="true"] + .additional-controls {
+    display: flex;
+    /* gap: 1rem; */
+}
 .media-controller button {
     flex-basis: 3.5rem;
     aspect-ratio: 1;
     border: none;
     background: transparent;
     display: flex;
+    flex-shrink: 0;
 }
 .media-controller button svg {
     width: 100%;
@@ -102,10 +119,10 @@ body {
 .media-controller button svg g > * {
     fill: var(--gallery-theme-foreground);
 }
-.media-controller[data-state="playing"] button.media-play-pause .icon.i-media-pause {
+.media-controller[data-state="playing"] button.media-play-pause .icon.i-media-play {
     display: none;
 }
-.media-controller[data-state="paused"] button.media-play-pause .icon.i-media-play {
+.media-controller[data-state="paused"] button.media-play-pause .icon.i-media-pause {
     display: none;
 }
 .cpt-gallery-api[data-fullscreen="true"] button.media-fullscreen .icon.i-media-open-fullscreen {
@@ -133,6 +150,16 @@ body {
 }
 [data-captions="true"] .media-controller {
     justify-content: flex-end;
+}
+[data-captions="true"] .media-controller .additional-controls .media-caption {
+    display: block;
+}
+[data-captions="false"] .media-controller .additional-controls .media-caption {
+    display: none;
+}
+.cpt-gallery-api:not([data-download-uri]) .media-controller .additional-controls .gallery-download,
+[data-download-uri=""] .media-controller .additional-controls .gallery-download {
+    display: none;
 }
 [data-captions="true"] .caption {
     align-self: self-end;

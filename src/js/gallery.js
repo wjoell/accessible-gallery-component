@@ -58,7 +58,7 @@ class GalleryPlayer {
         if (!this.gallery) {
             throw new Error(`Gallery element with data-gallery-id="${this.#galleryIDString}" not found.`);
         }
-        // playback controls
+        // menu and playback controls
         this.galleryMediaController = this.gallery.querySelector(".media-controller");
         this.galleryPlayPauseButton = this.galleryMediaController.querySelector(".media-play-pause");
         this.galleryNextButton = this.galleryMediaController.querySelector(".media-next");
@@ -67,6 +67,9 @@ class GalleryPlayer {
         if (!document.fullscreenEnabled) {
             this.galleryFullscreenButton.style.display = "none";
         }
+        this.galleryMoreMenuButton = this.galleryMediaController.querySelector(".more-menu");
+        this.galleryMoreMenu = this.galleryMediaController.querySelector(".additional-controls");
+        this.galleryCaptionsButton = this.galleryMediaController.querySelector(".media-caption");
         // gallery thumbnail container
         this.galleryThumbnailContainer = this.gallery.closest(".cpt-gallery-api").querySelector(".gallery-thumbnails");
         this.galleryThumbnailButtons = this.galleryThumbnailContainer.querySelectorAll("button");
@@ -124,6 +127,12 @@ class GalleryPlayer {
             if (event.target.closest(".media-fullscreen")) {
                 this.toggleFullscreen();
             }
+            if (event.target.closest(".more-menu")) {
+                this.toggleMoreMenu();
+            }
+            if (event.target.closest(".media-caption")) {
+                this.toggleCaptions();
+            }
             // console.log(event.target);
             if (event.target.closest("button.thumbnail")) {
                 this.pause();
@@ -171,6 +180,17 @@ class GalleryPlayer {
         this.galleryMediaController.dataset.state = "paused";
         // console.log(this.galleryMediaController.dataset.state);
     }
+    toggleMoreMenu() {
+        if (this.galleryMoreMenuButton.getAttribute("aria-expanded") == "false") {
+            this.galleryMoreMenuButton.setAttribute("aria-label", "Close additional controls menu");
+            this.galleryMoreMenu.removeAttribute("hidden");
+            this.galleryMoreMenuButton.setAttribute("aria-expanded", "true");
+        } else if (this.galleryMoreMenuButton.getAttribute("aria-expanded") == "true") {
+            this.galleryMoreMenuButton.setAttribute("aria-expanded", "false");
+            this.galleryMoreMenu.setAttribute("hidden", "");
+        }
+    }
+    toggleCaptions() {}
     togglePlayPause() {
         // toggle the gallery play/pause
         if (this.#galleryDataObject.running) {

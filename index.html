@@ -19,7 +19,7 @@
 
 
         <!-- .cpt-gallery written by Cascade server with data-* values set by data def values -->
-        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2" data-captions="true"
+        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2" data-captions="false"
             data-controls="true" data-display-type="photo-gallery" data-fullscreen="false" data-img-fit="cover"
             data-mode="static" data-download-uri="">
             <!-- 
@@ -381,7 +381,7 @@
                     }
                 }
             </script>
-            <div class="gallery-viewer" data-captioned="true" data-gallery-id="199">
+            <div class="gallery-viewer" data-gallery-id="199">
                 <div class="figure" data-view="background" role="none">
                     <picture>
                         <source
@@ -447,14 +447,14 @@
                             <svg class="icn-gallery-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
                                 role="presentation">
                                 <circle cx="50" cy="50" r="50" />
-                                <g class="close" hidden="" fill="#fff">
-                                    <path class="st1" d="M75.3,31l-6.6-6.6L24.7,68.3l6.6,6.6L75.3,31z" />
-                                    <path class="st1" d="M31.4,24.4L24.7,31L68.6,75l6.6-6.6L31.4,24.4z" />
+                                <g class="close" fill="#fff">
+                                    <path d="M75.3,31l-6.6-6.6L24.7,68.3l6.6,6.6L75.3,31z" />
+                                    <path d="M31.4,24.4L24.7,31L68.6,75l6.6-6.6L31.4,24.4z" />
                                 </g>
                                 <g class="more" fill="#fff">
-                                    <circle class="st2" cx="50" cy="50" r="7.5" />
-                                    <circle class="st2" cx="50" cy="25" r="7.5" />
-                                    <circle class="st2" cx="50" cy="75" r="7.5" />
+                                    <circle cx="50" cy="50" r="7.5" />
+                                    <circle cx="50" cy="25" r="7.5" />
+                                    <circle cx="50" cy="75" r="7.5" />
                                 </g>
                             </svg>
                         </span>
@@ -484,14 +484,24 @@
                                 </svg>
                             </span>
                         </button>
-                        <button aria-label="Expand caption" class="media-caption" aria-expanded="false" disabled>
+                        <button aria-label="Expand caption" class="media-caption" aria-expanded="false" disabled hidden>
                             <span class="icon i-media-caption">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="i-media-caption" role="presentation"
                                     viewBox="0 0 100 100">
                                     <circle class="bg" cx="50" cy="50" r="50"></circle>
-                                    <g class="symbol" fill="#fff">
-                                        <path d="M20,75l40-25L20,25V75z"></path>
-                                        <path d="M80,25H65v25v25h15V25z"></path>
+                                    <g class="media-expand-caption" fill="#fff">
+                                        <rect x="20" y="45" width="60" height="10" />
+                                        <rect x="20" y="24.6" width="50" height="10" />
+                                        <rect x="20" y="65.4" width="30" height="10" />
+                                    </g>
+                                    <g>
+                                        <polygon points="28.7 65.4 20 65.4 20 74.1 28.7 65.4" />
+                                        <polygon points="30.5 75.4 50 75.4 50 65.4 40.5 65.4 30.5 75.4" />
+                                        <polygon points="50.9 55 80 55 80 45 60.9 45 50.9 55" />
+                                        <polygon points="49.1 45 20 45 20 55 39.1 55 49.1 45" />
+                                        <polygon points="69.5 24.6 20 24.6 20 34.6 59.5 34.6 69.5 24.6" />
+                                        <rect x="5.2" y="48" width="89.6" height="4"
+                                            transform="translate(-20.71 50) rotate(-45)" />
                                     </g>
                                 </svg>
                             </span>
