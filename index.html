@@ -19,9 +19,9 @@
 
 
         <!-- .cpt-gallery written by Cascade server with data-* values set by data def values -->
-        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2" data-captions="yes"
+        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2" data-captions="true"
             data-controls="true" data-display-type="photo-gallery" data-fullscreen="false" data-img-fit="cover"
-            data-mode="static">
+            data-mode="static" data-download-uri="">
             <!-- 
                 data-mode updated by JS to "active"
         
@@ -475,6 +475,18 @@
                         <button aria-label="Next image" class="media-next">
                             <span class="icon i-media-next">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="i-media-next" role="presentation"
+                                    viewBox="0 0 100 100">
+                                    <circle class="bg" cx="50" cy="50" r="50"></circle>
+                                    <g class="symbol" fill="#fff">
+                                        <path d="M20,75l40-25L20,25V75z"></path>
+                                        <path d="M80,25H65v25v25h15V25z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                        <button aria-label="Expand caption" class="media-caption" aria-expanded="false" disabled>
+                            <span class="icon i-media-caption">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="i-media-caption" role="presentation"
                                     viewBox="0 0 100 100">
                                     <circle class="bg" cx="50" cy="50" r="50"></circle>
                                     <g class="symbol" fill="#fff">
