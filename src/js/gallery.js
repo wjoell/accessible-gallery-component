@@ -293,10 +293,14 @@ class GalleryPlayer {
         // set thumbnail
         this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).setAttribute("aria-pressed", "true");
         // scroll to active thumbnail
-        this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).scrollIntoView({
+        // this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).scrollIntoView({
+        //     behavior: "smooth",
+        //     block: "nearest",
+        //     inline: "center",
+        // });
+        this.galleryThumbnailContainer.scroll({
+            left: this.galleryThumbnailContainer.querySelector(`button[data-asset-id="${assetId}"]`).offsetLeft - this.galleryThumbnailContainer.offsetLeft,
             behavior: "smooth",
-            block: "nearest",
-            inline: "center",
         });
     }
     // gallery transition methods
