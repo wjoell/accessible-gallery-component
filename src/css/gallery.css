@@ -83,6 +83,7 @@ body {
     align-self: self-end;
     z-index: 10;
     display: flex;
+    align-items: flex-start;
 }
 .media-controller .more-menu[aria-expanded="true"] g.close {
     opacity: 1;
@@ -98,25 +99,27 @@ body {
 }
 .media-controller .more-menu[aria-expanded="true"] + .additional-controls {
     display: flex;
-    /* gap: 1rem; */
+    align-items: flex-start;
 }
-.media-controller button {
-    flex-basis: 3.5rem;
+.media-controller button,
+.media-controller a {
+    flex-basis: 2.5rem;
     aspect-ratio: 1;
     border: none;
     background: transparent;
     display: flex;
     flex-shrink: 0;
+    padding: 0.25rem;
 }
-.media-controller button svg {
+.media-controller svg {
     width: 100%;
     height: 100%;
 }
-.media-controller button svg > circle {
+.media-controller svg > circle {
     fill: var(--gallery-theme-background);
 }
-.media-controller button svg .symbol path,
-.media-controller button svg g > * {
+.media-controller svg .symbol path,
+.media-controller svg g > * {
     fill: var(--gallery-theme-foreground);
 }
 .media-controller[data-state="playing"] button.media-play-pause .icon.i-media-play {
@@ -144,24 +147,24 @@ body {
     background: var(--gallery-theme-foreground);
     opacity: 0.7;
 }
-[data-captions="true"] .progress,
-[data-captions="true"] .media-controller {
+[data-allow-captions="true"] .progress,
+[data-allow-captions="true"] .media-controller {
     align-self: self-start;
 }
-[data-captions="true"] .media-controller {
+[data-allow-captions="true"] .media-controller {
     justify-content: flex-end;
 }
-[data-captions="true"] .media-controller .additional-controls .media-caption {
-    display: block;
+[data-allow-captions="true"] .media-controller .additional-controls .media-caption {
+    display: flex;
 }
-[data-captions="false"] .media-controller .additional-controls .media-caption {
+[data-allow-captions="false"] .media-controller .additional-controls .media-caption {
     display: none;
 }
 .cpt-gallery-api:not([data-download-uri]) .media-controller .additional-controls .gallery-download,
 [data-download-uri=""] .media-controller .additional-controls .gallery-download {
     display: none;
 }
-[data-captions="true"] .caption {
+[data-allow-captions="true"] .caption {
     align-self: self-end;
     background: rgba(255, 255, 255, 0.8);
     bottom: 0;
@@ -172,9 +175,20 @@ body {
     white-space: wrap;
     z-index: auto;
 }
-[data-captions="false"] .caption,
-[data-captions="false"] .caption:empty {
+[data-allow-captions="true"][data-show-captions="false"] .caption,
+[data-allow-captions="false"] .caption,
+[data-allow-captions="false"] .caption:empty,
+[data-allow-captions="true"] .caption:empty {
     display: none;
+}
+button.media-caption[aria-expanded="true"] .media-expand-caption {
+    opacity: 0;
+}
+button.media-caption[aria-expanded="false"] .media-collapse-caption {
+    opacity: 0;
+}
+button.media-caption[disabled] {
+    opacity: 0.5;
 }
 /* .gallery-viewer picture[data-view="background"] {
     z-index: 0;

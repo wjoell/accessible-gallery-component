@@ -19,9 +19,10 @@
 
 
         <!-- .cpt-gallery written by Cascade server with data-* values set by data def values -->
-        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2" data-captions="false"
-            data-controls="true" data-display-type="photo-gallery" data-fullscreen="false" data-img-fit="cover"
-            data-mode="static" data-download-uri="">
+        <div class="component cpt-gallery-api" data-allow-fullscreen="true" data-aspect-ratio="2"
+            data-allow-captions="true" data-show-captions="true" data-controls="true" data-display-type="photo-gallery"
+            data-fullscreen="false" data-img-fit="cover" data-mode="static"
+            data-download-uri="https://apple.com/?foo=bar&amp;bar=foo">
             <!-- 
                 data-mode updated by JS to "active"
         
@@ -484,7 +485,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <button aria-label="Expand caption" class="media-caption" aria-expanded="false" disabled hidden>
+                        <button aria-label="Expand caption" class="media-caption" aria-expanded="true">
                             <span class="icon i-media-caption">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="i-media-caption" role="presentation"
                                     viewBox="0 0 100 100">
@@ -494,7 +495,7 @@
                                         <rect x="20" y="24.6" width="50" height="10" />
                                         <rect x="20" y="65.4" width="30" height="10" />
                                     </g>
-                                    <g>
+                                    <g class="media-collapse-caption" fill="#fff">
                                         <polygon points="28.7 65.4 20 65.4 20 74.1 28.7 65.4" />
                                         <polygon points="30.5 75.4 50 75.4 50 65.4 40.5 65.4 30.5 75.4" />
                                         <polygon points="50.9 55 80 55 80 45 60.9 45 50.9 55" />
@@ -532,7 +533,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <button aria-label="download gallery" class="gallery-download" hidden="">
+                        <a href="#" aria-label="download gallery" class="gallery-download">
                             <span class="icon i-gallery-download">
                                 <svg class="i-gallery-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
                                     role="presentation">
@@ -544,7 +545,7 @@
                                     </g>
                                 </svg>
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="progress" role="presentation">

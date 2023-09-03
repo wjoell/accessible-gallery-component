@@ -47,13 +47,13 @@ class GalleryPlayer {
         this.#galleryDataObject.fullscreen = false;
         // define dom elements and attributes for gallery
         this.gallery = galleryViewer;
-        this.galleryCaptionsEnabled = this.gallery.closest(".cpt-gallery-api").dataset.captions;
-        if (this.galleryCaptionsEnabled === "true") {
+        this.galleryCaptionsAllowed = this.gallery.closest(".cpt-gallery-api").dataset.allowCaptions;
+        if (this.galleryCaptionsAllowed === "true") {
             this.#galleryDataObject.captions = true;
         } else {
             this.#galleryDataObject.captions = false;
         }
-
+        this.galleryDownloadUri = this.gallery.closest(".cpt-gallery-api").dataset.downloadUri;
         // test for gallery element and raise error if not found
         if (!this.gallery) {
             throw new Error(`Gallery element with data-gallery-id="${this.#galleryIDString}" not found.`);
@@ -70,6 +70,10 @@ class GalleryPlayer {
         this.galleryMoreMenuButton = this.galleryMediaController.querySelector(".more-menu");
         this.galleryMoreMenu = this.galleryMediaController.querySelector(".additional-controls");
         this.galleryCaptionsButton = this.galleryMediaController.querySelector(".media-caption");
+        this.galleryDownloadLink = this.galleryMediaController.querySelector(".gallery-download");
+        if (this.galleryDownloadUri) {
+            this.galleryDownloadLink.href = this.galleryDownloadUri;
+        }
         // gallery thumbnail container
         this.galleryThumbnailContainer = this.gallery.closest(".cpt-gallery-api").querySelector(".gallery-thumbnails");
         this.galleryThumbnailButtons = this.galleryThumbnailContainer.querySelectorAll("button");
@@ -95,12 +99,12 @@ class GalleryPlayer {
         this.progressBarAnimation.pause();
 
         // set up event listeners
-        this.galleryFigure.addEventListener("mouseenter", () => {
-            this.pause();
-        });
-        this.galleryFigure.addEventListener("mouseleave", () => {
-            this.play();
-        });
+        // this.galleryFigure.addEventListener("mouseenter", () => {
+        //     this.pause();
+        // });
+        // this.galleryFigure.addEventListener("mouseleave", () => {
+        //     this.play();
+        // });
         // if this.#galleryDataObject.fullscreen is true set to false when esc key is pressed
         document.addEventListener("fullscreenchange", () => {
             if (!document.fullscreenElement) {
@@ -190,7 +194,17 @@ class GalleryPlayer {
             this.galleryMoreMenu.setAttribute("hidden", "");
         }
     }
-    toggleCaptions() {}
+    toggleCaptions() {
+        if (this.galleryCaptionsButton.getAttribute("aria-expanded") == "false") {
+            this.galleryCaptionsButton.setAttribute("aria-label", "Hide captions");
+            this.galleryCaptionsButton.setAttribute("aria-expanded", "true");
+            this.gallery.closest(".cpt-gallery-api").dataset.showCaptions = true;
+        } else if (this.galleryCaptionsButton.getAttribute("aria-expanded") == "true") {
+            this.galleryCaptionsButton.setAttribute("aria-label", "Show captions");
+            this.galleryCaptionsButton.setAttribute("aria-expanded", "false");
+            this.gallery.closest(".cpt-gallery-api").dataset.showCaptions = false;
+        }
+    }
     togglePlayPause() {
         // toggle the gallery play/pause
         if (this.#galleryDataObject.running) {
@@ -300,10 +314,12 @@ class GalleryPlayer {
             this.galleryTransitionCaption.innerHTML = this.#galleryDataObject.assets[assetId].caption;
             this.galleryFigure.setAttribute("aria-role", "figure");
             this.galleryFigure.setAttribute("aria-labelledby", this.galleryTransitionCaption.id);
+            this.galleryCaptionsButton.removeAttribute("disabled");
         } else {
             this.galleryTransitionCaption.innerHTML = "";
             this.galleryFigure.removeAttribute("aria-role");
             this.galleryFigure.removeAttribute("aria-labelledby");
+            this.galleryCaptionsButton.setAttribute("disabled", "");
         }
     }
     setBackgroundImageCaption(index) {
