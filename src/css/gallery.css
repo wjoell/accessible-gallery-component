@@ -15,13 +15,18 @@ body {
     --thumbnail-offset: clamp(5rem, 10rem, 10dvh);
     /* --thumbnail-offset: 10rem; */
     --aspect-ratio: 3/2;
-    /* display: grid; */
-    /* grid-template-areas: "viewer" "thumbnails"; */
-    /* grid-template-rows: 1fr auto; */
-    /* grid-template-columns: 1fr; */
-    /* outline: 3px solid fuchsia; */
-    /* width: 100%; */
-    /* max-height: calc(100vh - var(--offset)); */
+}
+.cpt-gallery-api[data-img-fit="contain"] {
+    --fit-img: contain;
+}
+.cpt-gallery-api[data-img-fit="cover"] {
+    --fit-img: cover;
+}
+.cpt-gallery-api[data-display-type="carousel"] .gallery-thumbnails {
+    display: none;
+}
+.cpt-gallery-api[data-controls="false"] .media-controller {
+    display: none;
 }
 .cpt-gallery-api[data-aspect-ratio="2"] {
     --aspect-ratio: 2/1;
@@ -45,7 +50,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     aspect-ratio: var(--aspect-ratio);
-    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em));
+    /* max-height: calc(100dvh - (var(--thumbnail-offset) + 2em)); */
     /* outline: 5px solid cornflowerblue; */
 }
 .gallery-viewer > * {
@@ -59,23 +64,20 @@ body {
     position: relative;
     align-self: center;
     aspect-ratio: var(--aspect-ratio);
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
     max-width: 100%;
-    /* outline: 3px solid lime;
-    max-height: calc(100dvh - (var(--thumbnail-offset) + 2em)); */
 }
 .gallery-viewer > .figure > * {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    /* outline: 1px solid red; */
 }
 .gallery-viewer .figure picture,
 .gallery-viewer .figure picture img {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
     aspect-ratio: var(--aspect-ratio);
-    object-fit: cover;
+    object-fit: var(--fit-img, cover);
     /* max-height: calc(100dvh - (var(--thumbnail-offset) + 2em)); */
     justify-self: center;
 }
@@ -117,10 +119,21 @@ body {
 }
 .media-controller svg > circle {
     fill: var(--gallery-theme-background);
+    stroke: var(--gallery-theme-background);
 }
 .media-controller svg .symbol path,
 .media-controller svg g > * {
     fill: var(--gallery-theme-foreground);
+}
+.media-controller button:hover,
+.media-controller button:focus {
+    svg > circle {
+        fill: var(--gallery-theme-foreground);
+    }
+    svg .symbol path,
+    svg g > * {
+        fill: var(--gallery-theme-background);
+    }
 }
 .media-controller[data-state="playing"] button.media-play-pause .icon.i-media-play {
     display: none;
@@ -190,15 +203,6 @@ button.media-caption[aria-expanded="false"] .media-collapse-caption {
 button.media-caption[disabled] {
     opacity: 0.5;
 }
-/* .gallery-viewer picture[data-view="background"] {
-    z-index: 0;
-}
-.gallery-viewer picture[data-view="transition"] {
-    z-index: 1;
-}
-.gallery-viewer figure[data-view="transition"] {
-    z-index: 2;
-} */
 .gallery-thumbnails {
     /* grid-area: thumbnails; */
     display: flex;
@@ -225,14 +229,40 @@ button.media-caption[disabled] {
     height: 100%;
     object-fit: cover;
 }
-button[aria-pressed="true"] {
-    outline: 1em solid var(--gallery-theme-accent);
-    outline-offset: -1em;
+.gallery-thumbnails button:hover,
+.gallery-thumbnails button:focus {
+    outline: 1rem solid var(--gallery-theme-background);
+    outline-offset: -1rem;
+}
+.gallery-thumbnails button[aria-pressed="true"] {
+    outline: 1rem solid var(--gallery-theme-accent);
+    outline-offset: -1rem;
 }
 .cpt-gallery-api button:hover {
     cursor: pointer;
 }
+
 .cpt-content :is(h1, h2, p) {
     margin-bottom: 1lh;
     max-width: 60ch;
+}
+.cpt-gallery-api :is(button, a) :is(.icon) {
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1;
+}
+@media screen and (display-mode: fullscreen) {
+    .cpt-gallery-api .gallery-viewer {
+        max-height: calc(100dvh - (var(--thumbnail-offset)));
+    }
+    .gallery-viewer > .figure {
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+    }
+    .gallery-viewer .figure picture,
+    .gallery-viewer .figure picture img {
+        width: auto;
+        height: 100%;
+    }
 }
