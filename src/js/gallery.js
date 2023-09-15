@@ -364,13 +364,16 @@ class GalleryPlayer {
 
             this.galleryFigure.style.opacity = 0;
             this.setTransitionImageSrc(this.#galleryDataObject.assetIndex);
-            if (this.#galleryDataObject.captions) {
-                this.setTransitionImageCaption(this.#galleryDataObject.assetIndex);
-            }
-            this.transition();
-            // start progress bar
-            this.progressBarAnimation.finish();
-            this.progressBarAnimation.play();
+            // wait for the transition image to load
+            this.galleryFigure.querySelector("img").addEventListener("load", () => {
+                if (this.#galleryDataObject.captions) {
+                    this.setTransitionImageCaption(this.#galleryDataObject.assetIndex);
+                }
+                this.transition();
+                // start progress bar
+                this.progressBarAnimation.finish();
+                this.progressBarAnimation.play();
+            });
         }, this.#galleryDataObject.intervalDelay);
     }
     transition() {
